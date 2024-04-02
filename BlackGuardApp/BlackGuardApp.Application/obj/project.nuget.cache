@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5DqT9A2fV3lOmIKDuoSAyoISESdP28oiWBM1+HDnFx8f8O0o9SvwUYuXZV7wh0rKb6UEjrhDfx49LvBkSBFJ8g==",
+  "dgSpecHash": "3baOWwr/LfFociTOnvxykM/yXcav+d4g6glOJT7g60ZpgcIa0xFQc/2H52CHcb/pULugefqv2YKQUp5e/cr6xw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\HP\\Documents\\BlackGuardApp\\BlackGuardApp\\BlackGuardApp.Application\\BlackGuardApp.Application.csproj",
+  "projectFilePath": "C:\\Users\\omoru\\Desktop\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Application\\BlackGuardApp.Application.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
