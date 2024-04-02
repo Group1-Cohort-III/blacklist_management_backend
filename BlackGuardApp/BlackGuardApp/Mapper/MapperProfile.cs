@@ -1,6 +1,12 @@
-﻿namespace BlackGuardApp.Mapper
+﻿using AutoMapper;
+
+namespace BlackGuardApp.Mapper
 {
-    public class MapperProfile
+    public class MapperProfile : Profile
     {
+        public MapperProfile()
+        {
+            
+        }
     }
 }
