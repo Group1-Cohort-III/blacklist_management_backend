@@ -32,4 +32,8 @@
     <Folder Include="Controller\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BlackGuardApp.Common\BlackGuardApp.Common.csproj" />
+  </ItemGroup>
+
 </Project>

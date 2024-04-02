@@ -1421,6 +1421,26 @@
             "rid": "win"
           }
         }
+      },
+      "BlackGuardApp.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "AutoMapper": "13.0.1",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.0",
+          "Microsoft.Extensions.DependencyInjection": "7.0.0",
+          "NLog.Database": "5.2.8",
+          "NLog.Web.AspNetCore": "5.3.8"
+        },
+        "compile": {
+          "bin/placeholder/BlackGuardApp.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BlackGuardApp.Common.dll": {}
+        }
       }
     }
   },
@@ -4313,11 +4333,17 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "BlackGuardApp.Common/1.0.0": {
+      "type": "project",
+      "path": "../BlackGuardApp.Common/BlackGuardApp.Common.csproj",
+      "msbuildProject": "../BlackGuardApp.Common/BlackGuardApp.Common.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
       "AutoMapper >= 13.0.1",
+      "BlackGuardApp.Common >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 7.0.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 7.0.0",
       "Microsoft.AspNetCore.OpenApi >= 7.0.9",
@@ -4363,7 +4389,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\omoru\\Desktop\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Common\\BlackGuardApp.Common.csproj": {
+              "projectPath": "C:\\Users\\omoru\\Desktop\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Common\\BlackGuardApp.Common.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
