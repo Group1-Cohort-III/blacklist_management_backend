@@ -1,4 +1,6 @@
-﻿using BlackGuardApp.Persistence.AppContext;
+﻿using BlackGuardApp.Application.Interfaces.Repositories;
+using BlackGuardApp.Persistence.AppContext;
+using BlackGuardApp.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,6 +13,9 @@ namespace BlackGuardApp.Persistence.ServiceExtension
         {
             services.AddDbContext<BlackGADbContext>(options => 
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Scoped);
+
+            services.AddScoped(typeof(IGenericRepository <>), typeof(GenericRepository<>));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
     }
 }
