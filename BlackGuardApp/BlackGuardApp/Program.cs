@@ -1,5 +1,6 @@
 using BlackGuardApp.Common.Utilities;
 using BlackGuardApp.Mapper;
+using BlackGuardApp.Persistence.ServiceExtension;
 using NLog;
 using NLog.Web;
 
@@ -16,7 +17,9 @@ try
 	builder.Services.AddControllers();
 	builder.Services.AddEndpointsApiExplorer();
 	builder.Services.AddSwaggerGen();
-	builder.Services.AddAutoMapper(typeof(MapperProfile));
+	builder.Services.AddDependencies(configuration);
+
+    builder.Services.AddAutoMapper(typeof(MapperProfile));
     builder.Logging.ClearProviders();
     builder.Host.UseNLog();
 

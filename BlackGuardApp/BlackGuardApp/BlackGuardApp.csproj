@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BlackGuardApp.Common\BlackGuardApp.Common.csproj" />
+    <ProjectReference Include="..\BlackGuardApp.Persistence\BlackGuardApp.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
