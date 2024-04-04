@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlackGuardApp.Application.ServicesImplementation
 {
-    internal class AuthenticationService
+     public class AuthenticationService
     {
     }
 }
