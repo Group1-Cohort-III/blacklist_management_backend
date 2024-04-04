@@ -37,7 +37,7 @@ namespace BlackGuardApp.Persistence.Repositories
         public async Task UpdateProductAsync(Product product)
         {
             Update(product);
-            await Task.CompletedTask; // Just a placeholder for asynchronous signature
+            await Task.CompletedTask; 
         }
 
         public async Task DeleteProductAsync(Product product)
