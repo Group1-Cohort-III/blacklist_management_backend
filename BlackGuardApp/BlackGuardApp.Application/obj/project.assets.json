@@ -1315,6 +1315,46 @@
             "rid": "win"
           }
         }
+      },
+      "BlackGuardApp.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "AutoMapper": "13.0.1",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.0",
+          "Microsoft.Extensions.DependencyInjection": "7.0.0",
+          "NLog.Database": "5.2.8",
+          "NLog.Web.AspNetCore": "5.3.8"
+        },
+        "compile": {
+          "bin/placeholder/BlackGuardApp.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BlackGuardApp.Common.dll": {}
+        }
+      },
+      "BlackGuardApp.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "AutoMapper": "13.0.1",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.0",
+          "Microsoft.Extensions.DependencyInjection": "7.0.0",
+          "NLog.Database": "5.2.8",
+          "NLog.Web.AspNetCore": "5.3.8"
+        },
+        "compile": {
+          "bin/placeholder/BlackGuardApp.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BlackGuardApp.Domain.dll": {}
+        }
       }
     }
   },
@@ -3857,11 +3897,23 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "BlackGuardApp.Common/1.0.0": {
+      "type": "project",
+      "path": "../BlackGuardApp.Common/BlackGuardApp.Common.csproj",
+      "msbuildProject": "../BlackGuardApp.Common/BlackGuardApp.Common.csproj"
+    },
+    "BlackGuardApp.Domain/1.0.0": {
+      "type": "project",
+      "path": "../BlackGuardApp.Domain/BlackGuardApp.Domain.csproj",
+      "msbuildProject": "../BlackGuardApp.Domain/BlackGuardApp.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
       "AutoMapper >= 13.0.1",
+      "BlackGuardApp.Common >= 1.0.0",
+      "BlackGuardApp.Domain >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 7.0.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 7.0.0",
       "Microsoft.EntityFrameworkCore >= 7.0.0",
@@ -3874,31 +3926,39 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Itunu\\.nuget\\packages\\": {}
+    "C:\\Users\\HP\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Itunu\\source\\repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Application\\BlackGuardApp.Application.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\Documents\\BlackGuardApp\\BlackGuardApp\\BlackGuardApp.Application\\BlackGuardApp.Application.csproj",
       "projectName": "BlackGuardApp.Application",
-      "projectPath": "C:\\Users\\Itunu\\source\\repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Application\\BlackGuardApp.Application.csproj",
-      "packagesPath": "C:\\Users\\Itunu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Itunu\\source\\repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Application\\obj\\",
+      "projectPath": "C:\\Users\\HP\\Documents\\BlackGuardApp\\BlackGuardApp\\BlackGuardApp.Application\\BlackGuardApp.Application.csproj",
+      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\HP\\Documents\\BlackGuardApp\\BlackGuardApp\\BlackGuardApp.Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Itunu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\HP\\Documents\\BlackGuardApp\\BlackGuardApp\\BlackGuardApp.Common\\BlackGuardApp.Common.csproj": {
+              "projectPath": "C:\\Users\\HP\\Documents\\BlackGuardApp\\BlackGuardApp\\BlackGuardApp.Common\\BlackGuardApp.Common.csproj"
+            },
+            "C:\\Users\\HP\\Documents\\BlackGuardApp\\BlackGuardApp\\BlackGuardApp.Domain\\BlackGuardApp.Domain.csproj": {
+              "projectPath": "C:\\Users\\HP\\Documents\\BlackGuardApp\\BlackGuardApp\\BlackGuardApp.Domain\\BlackGuardApp.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -3972,7 +4032,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }
