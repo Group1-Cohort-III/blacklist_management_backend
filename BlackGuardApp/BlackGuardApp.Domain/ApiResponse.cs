@@ -28,7 +28,7 @@
             Message = message;
             Data = data;
         }
-        public ApiResponse(bool isSucceeded, T data, List<string> errors)
+        public ApiResponse(bool isSucceeded, string v, T data, List<string> errors)
         {
             Succeeded = isSucceeded;
             Data = data;

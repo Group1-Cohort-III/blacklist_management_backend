@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace BlackGuardApp.Application.DTOs
 {
-    internal class ProductResponseDto
+    public class ProductResponseDto
     {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
     }
+}
 }
