@@ -4,6 +4,7 @@
     {
 
         IProductRepository ProductRepository { get; }
+        IAppUserRepository AppUserRepository { get; }
         Task<int> SaveChangesAsync();
         void Dispose();
 
