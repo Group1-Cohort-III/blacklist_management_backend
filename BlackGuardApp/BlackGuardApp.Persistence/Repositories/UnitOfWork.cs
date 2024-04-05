@@ -1,6 +1,5 @@
 ﻿using BlackGuardApp.Application.Interfaces.Repositories;
 using BlackGuardApp.Persistence.AppContext;
-using Microsoft.EntityFrameworkCore;
 
 namespace BlackGuardApp.Persistence.Repositories
 {
@@ -9,8 +8,10 @@ namespace BlackGuardApp.Persistence.Repositories
         private readonly BlackGADbContext _context;
         public UnitOfWork(BlackGADbContext context)
         {
+            ProductRepository = new ProductRepository(context);
             _context = context;
         }
+        public IProductRepository ProductRepository { get; }
         public void Dispose() => _context.Dispose();
 
         public async Task<int> SaveChangesAsync() => await _context.SaveChangesAsync();

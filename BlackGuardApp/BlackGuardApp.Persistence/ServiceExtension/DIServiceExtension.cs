@@ -11,10 +11,10 @@ namespace BlackGuardApp.Persistence.ServiceExtension
     {
         public static void AddDependencies(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<BlackGADbContext>(options => 
+            services.AddDbContext<BlackGADbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Scoped);
 
-            services.AddScoped(typeof(IGenericRepository <>), typeof(GenericRepository<>));
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
     }

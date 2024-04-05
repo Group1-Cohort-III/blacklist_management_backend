@@ -28,7 +28,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BlackGuardApp.Application\BlackGuardApp.Application.csproj" />
     <ProjectReference Include="..\BlackGuardApp.Common\BlackGuardApp.Common.csproj" />
+    <ProjectReference Include="..\BlackGuardApp.Domain\BlackGuardApp.Domain.csproj" />
     <ProjectReference Include="..\BlackGuardApp.Persistence\BlackGuardApp.Persistence.csproj" />
   </ItemGroup>
 

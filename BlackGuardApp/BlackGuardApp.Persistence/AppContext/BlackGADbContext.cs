@@ -11,6 +11,6 @@ namespace BlackGuardApp.Persistence.AppContext
         public DbSet<BlackListedProduct> BlacklistItems { get; set; }
         public DbSet<BlacklistHistory> BlacklistHistories { get; set; }
         public DbSet<BlacklistCriteria> BlacklistCriterias { get; set; }
-       
+
     }
 }

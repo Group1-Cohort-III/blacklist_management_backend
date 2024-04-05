@@ -29,4 +29,9 @@
     <PackageReference Include="NLog.Web.AspNetCore" Version="5.3.8" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BlackGuardApp.Common\BlackGuardApp.Common.csproj" />
+    <ProjectReference Include="..\BlackGuardApp.Domain\BlackGuardApp.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
