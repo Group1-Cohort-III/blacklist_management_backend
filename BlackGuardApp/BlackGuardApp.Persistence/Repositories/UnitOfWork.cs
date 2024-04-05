@@ -8,10 +8,14 @@ namespace BlackGuardApp.Persistence.Repositories
         private readonly BlackGADbContext _context;
         public UnitOfWork(BlackGADbContext context)
         {
-            ProductRepository = new ProductRepository(context);
             _context = context;
+            ProductRepository = new ProductRepository(context);
+            AppUserRepository = new AppUserRepository(context);
+
         }
         public IProductRepository ProductRepository { get; }
+        public IAppUserRepository AppUserRepository { get; private set; }
+
         public void Dispose() => _context.Dispose();
 
         public async Task<int> SaveChangesAsync() => await _context.SaveChangesAsync();
