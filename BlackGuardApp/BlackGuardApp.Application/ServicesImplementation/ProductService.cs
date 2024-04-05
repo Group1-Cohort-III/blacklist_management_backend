@@ -1,17 +1,20 @@
-﻿using BlackGuardApp.Application.DTOs;
+﻿using AutoMapper;
+using BlackGuardApp.Application.DTOs;
+using BlackGuardApp.Application.Interfaces;
 using BlackGuardApp.Application.Interfaces.Repositories;
 using BlackGuardApp.Common.Utilities;
 using BlackGuardApp.Domain;
+using BlackGuardApp.Domain.Entities;
+using Microsoft.Extensions.Logging;
 
-
-namespace BlackGuardApp.Application.Interfaces.Services
+namespace BlackGuardApp.Application.ServicesImplementation
 
 {
-    public class ProductService
+    public class ProductService : IProductService
     {
         private readonly IUnitOfWork _unitOfWork;
-       // private readonly IMapper _mapper;
-        //private readonly ILogger<ProductService> _logger;
+        private readonly IMapper _mapper;
+        private readonly ILogger<ProductService> _logger;
 
 
         public ProductService(IUnitOfWork unitOfWork, IMapper mapper, ILogger<ProductService> logger)
@@ -22,7 +25,7 @@ namespace BlackGuardApp.Application.Interfaces.Services
         }
 
 
-        public ApiResponse<GetProductsDto> GetAllProducts(int PerPage, int Page)
+        public async Task<ApiResponse<GetProductsDto>> GetAllProducts(int PerPage, int Page)
         {
             try
             {
@@ -43,29 +46,29 @@ namespace BlackGuardApp.Application.Interfaces.Services
                     TotalPageCount = pagedProductDtos.Result.TotalPageCount,
                     TotalCount = pagedProductDtos.Result.TotalCount
                 };
-                return new ApiResponse<GetProductsDto>(true, "products retrieved.", 200, getProductsDto);
+                return new ApiResponse<GetProductsDto>(true, "products retrieved.", getProductsDto, new List<string>() { });
             }
             catch (Exception ex)
             {
 
 
-                _logger.LogError(ex, "Error occurred while getting all productss.");
+                _logger.LogError(ex, "Error occurred while getting all products.");
                 return new ApiResponse<GetProductsDto>(false, "Error occurred while getting all products.", 500, null, new List<string>() { ex.Message });
             }
         }
 
 
-        public ApiResponse<ProductResponseDto> GetItemById(string id)
+        public async Task<ApiResponse<ProductResponseDto>> GetProductById(string id)
         {
             try
             {
-                var item = _unitOfWork.ProductRepository.GetItemById(id);
-                if (item == null)
+                var product = await _unitOfWork.ProductRepository.GetProductByIdAsync(id);
+                if (product == null)
                 {
                     return new ApiResponse<ProductResponseDto>(false, "product not found", 404, null, new List<string>());
                 }
-                var itemDto = _mapper.Map<ProductResponseDto>(item);
-                return new ApiResponse<ProductResponseDto>(true, "product found", 200, itemDto, new List<string>());
+                var productDto = _mapper.Map<ProductResponseDto>(product);
+                return new ApiResponse<ProductResponseDto>(true, "product found", 200, productDto, new List<string>());
             }
             catch (Exception ex)
             {
@@ -75,18 +78,16 @@ namespace BlackGuardApp.Application.Interfaces.Services
         }
 
 
-        public ApiResponse<ProductResponseDto> AddItem(ProductRequestDto productRequestDto)
+        public async Task<ApiResponse<ProductResponseDto>> AddProduct(ProductRequestDto productRequestDto)
         {
             try
             {
-                var items = _mapper.Map<Products>(productRequestDto);
-                _unitOfWork.ProductsRepository.AddProduct(product);
-                _unitOfWork.SaveChanges();
+                var products = _mapper.Map<Product>(productRequestDto);
+                await _unitOfWork.ProductRepository.AddProductAsync(products);
+                await _unitOfWork.SaveChangesAsync();
 
-
-                var responseDto = _mapper.Map<ProductResponseDto>(items);
-                return new ApiResponse<ProductResponseDto>(true, $"Successfully added an item", 201, responseDto, new List<string>());
-
+                var responseDto = _mapper.Map<ProductResponseDto>(products);
+                return new ApiResponse<ProductResponseDto>(true, $"Successfully added a product", 201, responseDto, new List<string>());
 
             }
             catch (Exception ex)
@@ -96,25 +97,22 @@ namespace BlackGuardApp.Application.Interfaces.Services
                 return new ApiResponse<ProductResponseDto>(true, "Error occurred while adding a product", 500, null, errorList);
             }
 
-
         }
-
-
-        public ApiResponse<ProductResponseDto> UpdateItem(string id, ProductRequestDto itemRequestDto)
+        public async Task<ApiResponse<ProductResponseDto>> UpdateProduct(string id, ProductRequestDto productRequestDto)
         {
             try
             {
-                var existingItem = _unitOfWork.ProductsRepository.GetItemById(id);
-                if (existingItem == null)
+                var existingProduct = await _unitOfWork.ProductRepository.GetProductByIdAsync(id);
+                if (existingProduct == null)
                     return new ApiResponse<ProductResponseDto>(false, 400, $"product not found.");
 
 
-                var item = _mapper.Map(itemRequestDto, existingItem);
-                _unitOfWork.ProductsRepository.Update(existingItem);
-                _unitOfWork.SaveChanges();
+                var product = _mapper.Map(productRequestDto, existingProduct);
+                await _unitOfWork.ProductRepository.UpdateProductAsync(existingProduct);
+                await _unitOfWork.SaveChangesAsync();
 
 
-                var responseDto = _mapper.Map<ProductResponseDto>(item);
+                var responseDto = _mapper.Map<ProductResponseDto>(product);
                 return new ApiResponse<ProductResponseDto>(true, $"Successfully updated a product", 200, responseDto, new List<string>());
             }
             catch (Exception ex)
@@ -125,19 +123,19 @@ namespace BlackGuardApp.Application.Interfaces.Services
                 return new ApiResponse<ProductResponseDto>(true, "Error occurred while updating the product", 500, null, errorList);
             }
         }
-        public ApiResponse<ProductResponseDto> DeleteItem(string id)
+        public async Task<ApiResponse<ProductResponseDto>> DeleteProduct(string id)
         {
             try
             {
-                var existingProduct = _unitOfWork.ProductsRepository.GetItemById(id);
+                var existingProduct = await _unitOfWork.ProductRepository.GetProductByIdAsync(id);
                 if (existingProduct == null)
                 {
                     return new ApiResponse<ProductResponseDto>(false, 404, $"product not found.");
 
 
                 }
-                _unitOfWork.ProductsRepository.Delete(existingProduct);
-                _unitOfWork.SaveChanges();
+                await _unitOfWork.ProductRepository.DeleteProductAsync(existingProduct);
+                await _unitOfWork.SaveChangesAsync();
                 return new ApiResponse<ProductResponseDto>(true, 200, $"productdeleted successfully .");
             }
             catch (Exception)
@@ -147,5 +145,11 @@ namespace BlackGuardApp.Application.Interfaces.Services
                 return new ApiResponse<ProductResponseDto>(false, 500, $"An error occured during this process.");
             }
         }
+
+
     }
+
+
+
+
 }

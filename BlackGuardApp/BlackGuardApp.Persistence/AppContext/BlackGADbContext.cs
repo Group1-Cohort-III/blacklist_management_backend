@@ -1,4 +1,6 @@
 ﻿using BlackGuardApp.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlackGuardApp.Persistence.AppContext
 {
@@ -9,6 +11,6 @@ namespace BlackGuardApp.Persistence.AppContext
         public DbSet<BlackListedProduct> BlacklistItems { get; set; }
         public DbSet<BlacklistHistory> BlacklistHistories { get; set; }
         public DbSet<BlacklistCriteria> BlacklistCriterias { get; set; }
-       
+
     }
 }
