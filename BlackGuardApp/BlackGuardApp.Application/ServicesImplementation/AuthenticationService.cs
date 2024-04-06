@@ -111,32 +111,39 @@ namespace BlackGuardApp.Application.ServicesImplementation
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public Task<ApiResponse<string>> SetPasswordAsync(string email, string password, string confirmPassword)
+        public async Task<ApiResponse<string>> SetPasswordAsync(string email, string password, string confirmPassword)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (password != confirmPassword)
+                {
+                    return new ApiResponse<string>(false, "Passwords do not match.", StatusCodes.Status400BadRequest, new List<string>());
+                }
+
+                var existingUser = await _userManager.FindByEmailAsync(email);
+                if (existingUser == null)
+                {
+                    return new ApiResponse<string>(false, "User not found.", StatusCodes.Status404NotFound, new List<string>());
+                }
+
+                var token = await _userManager.GeneratePasswordResetTokenAsync(existingUser);
+
+                var result = await _userManager.ResetPasswordAsync(existingUser, token, password);
+                if (result.Succeeded)
+                {
+
+                    return new ApiResponse<string>(true, StatusCodes.Status200OK, "Password set successfully, you can proceed to login");
+                }
+                else
+                {
+                    return new ApiResponse<string>(false, "Failed to set password.", StatusCodes.Status500InternalServerError, new List<string>());
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse<string>(false, "An error occurred while setting password: " + ex.Message,
+                    StatusCodes.Status500InternalServerError, new List<string>() { ex.Message });
+            }
         }
 
         public Task<ApiResponse<string>> ValidateTokenAsync(string token)
