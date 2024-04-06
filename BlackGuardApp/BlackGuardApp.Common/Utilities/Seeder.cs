@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlackGuardApp.Common.Utilities
 {
-    internal class Seeder
+    public class Seeder
     {
     }
 }

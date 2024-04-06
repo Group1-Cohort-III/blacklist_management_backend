@@ -1,3 +1,4 @@
+using BlackGuardApp.APIConfigurations;
 using BlackGuardApp.Common.Utilities;
 using BlackGuardApp.Mapper;
 using BlackGuardApp.Persistence.ServiceExtension;
@@ -18,6 +19,7 @@ try
 	builder.Services.AddEndpointsApiExplorer();
 	builder.Services.AddSwaggerGen();
 	builder.Services.AddDependencies(configuration);
+    builder.Services.ConfigureAuthentication(configuration);
 
     builder.Services.AddAutoMapper(typeof(MapperProfile));
     builder.Logging.ClearProviders();
