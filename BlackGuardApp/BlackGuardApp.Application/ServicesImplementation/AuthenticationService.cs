@@ -78,7 +78,8 @@ namespace BlackGuardApp.Application.ServicesImplementation
             }
             catch (Exception ex)
             {
-                return ApiResponse<LoginResponseDto>.Failed(false, "Some error occurred while login in." + ex.Message, 
+                _logger.LogError($"An error occurred while trying to login: {ex}");
+                return ApiResponse<LoginResponseDto>.Failed(false, "An error occurred while trying to login." + ex.Message, 
                     StatusCodes.Status500InternalServerError, new List<string>() { ex.Message });
             }
         }
@@ -141,14 +142,49 @@ namespace BlackGuardApp.Application.ServicesImplementation
             }
             catch (Exception ex)
             {
+                _logger.LogError($"An error occurred while setting password: {ex}");
                 return new ApiResponse<string>(false, "An error occurred while setting password: " + ex.Message,
                     StatusCodes.Status500InternalServerError, new List<string>() { ex.Message });
             }
         }
 
-        public Task<ApiResponse<string>> ValidateTokenAsync(string token)
+        public ApiResponse<string> ValidateTokenAsync(string token)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var key = Encoding.UTF8.GetBytes(_config.GetSection("JwtSettings:Secret").Value);
+
+                var validationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = _config.GetSection("JwtSettings:ValidIssuer").Value,
+                    ValidAudience = _config.GetSection("JwtSettings:ValidAudience").Value,
+                    IssuerSigningKey = new SymmetricSecurityKey(key)
+                };
+
+                SecurityToken securityToken;
+                var principal = tokenHandler.ValidateToken(token, validationParameters, out securityToken);
+
+                var emailClaim = principal.FindFirst(JwtRegisteredClaimNames.Email)?.Value;
+
+                return new ApiResponse<string>(true, "Token is valid.", StatusCodes.Status200OK, new List<string>());
+            }
+            catch (SecurityTokenException ex)
+            {
+                _logger.LogError($"An error occurred while trying to validate token: {ex}");
+                return new ApiResponse<string>(false, "Token validation failed.", StatusCodes.Status400BadRequest, 
+                    new List<string>());
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"An error occurred while trying to validate token: {ex}");
+                return new ApiResponse<string>(false, "an error occurred during token validation", StatusCodes.Status500InternalServerError, 
+                    new List<string>());
+            }
         }
     }
 }

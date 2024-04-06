@@ -7,6 +7,6 @@ namespace BlackGuardApp.Application.Interfaces.Services
     {
         Task<ApiResponse<LoginResponseDto>> LoginAsync(LoginRequestDto requestDto);
         Task<ApiResponse<string>> SetPasswordAsync(string email, string password, string confirmPassword);
-        Task<ApiResponse<string>> ValidateTokenAsync(string token);
+        ApiResponse<string> ValidateTokenAsync(string token);
     }
 }
