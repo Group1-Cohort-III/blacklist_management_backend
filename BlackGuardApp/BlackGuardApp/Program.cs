@@ -18,9 +18,9 @@ try
 	builder.Services.AddControllers();
 	builder.Services.AddEndpointsApiExplorer();
 	builder.Services.AddSwaggerGen();
+	builder.Services.AddSwagger();
 	builder.Services.AddDependencies(configuration);
     builder.Services.ConfigureAuthentication(configuration);
-
     builder.Services.AddAutoMapper(typeof(MapperProfile));
     builder.Logging.ClearProviders();
     builder.Host.UseNLog();
