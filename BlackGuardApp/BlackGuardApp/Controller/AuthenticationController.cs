@@ -2,7 +2,6 @@
 using BlackGuardApp.Application.Interfaces.Services;
 using BlackGuardApp.Domain;
 using BlackGuardApp.Domain.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
