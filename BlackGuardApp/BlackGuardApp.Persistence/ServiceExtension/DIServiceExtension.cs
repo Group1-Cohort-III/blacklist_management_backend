@@ -1,4 +1,6 @@
 ﻿using BlackGuardApp.Application.Interfaces.Repositories;
+using BlackGuardApp.Application.Interfaces.Services;
+using BlackGuardApp.Application.ServicesImplementation;
 using BlackGuardApp.Persistence.AppContext;
 using BlackGuardApp.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +18,7 @@ namespace BlackGuardApp.Persistence.ServiceExtension
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
         }
     }
 }
