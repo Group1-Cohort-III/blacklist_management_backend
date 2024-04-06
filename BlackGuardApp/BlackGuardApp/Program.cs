@@ -19,6 +19,7 @@ try
 	builder.Services.AddEndpointsApiExplorer();
 	builder.Services.AddSwaggerGen();
 	builder.Services.AddSwagger();
+	builder.Services.AddAuthentication();
 	builder.Services.AddDependencies(configuration);
     builder.Services.ConfigureAuthentication(configuration);
     builder.Services.AddAutoMapper(typeof(MapperProfile));
@@ -27,7 +28,7 @@ try
 
     var app = builder.Build();
 
-	// Configure the HTTP request pipeline.
+
 	if (app.Environment.IsDevelopment())
 	{
 		app.UseSwagger();
@@ -42,7 +43,11 @@ try
 
     app.UseHttpsRedirection();
 
+	app.UseAuthentication();
+
 	app.UseAuthorization();
+
+	app.UseCors();
 
 	app.MapControllers();
 
