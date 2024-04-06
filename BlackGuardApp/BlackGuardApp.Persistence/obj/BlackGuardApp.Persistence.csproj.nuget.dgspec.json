@@ -145,7 +145,11 @@
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\omoru\\Desktop\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Domain\\BlackGuardApp.Domain.csproj": {
+                "projectPath": "C:\\Users\\omoru\\Desktop\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Domain\\BlackGuardApp.Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

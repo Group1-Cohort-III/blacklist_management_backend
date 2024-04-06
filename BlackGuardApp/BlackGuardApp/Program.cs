@@ -34,7 +34,13 @@ try
 		app.UseSwaggerUI();
 	}
 
-	app.UseHttpsRedirection();
+    using (var scope = app.Services.CreateScope())
+    {
+        var serviceProvider = scope.ServiceProvider;
+        await Seeder.SeedRolesAndUserAdmin(serviceProvider);
+    }
+
+    app.UseHttpsRedirection();
 
 	app.UseAuthorization();
 
