@@ -1,9 +1,11 @@
 ﻿using BlackGuardApp.Application.DTOs;
 using BlackGuardApp.Application.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlackGuardApp.Controller
 {
+    [Authorize(Policy = "UserAdminPolicy")]
     [Route("api/[controller]")]
     [ApiController]
     public class UserAdminController : ControllerBase

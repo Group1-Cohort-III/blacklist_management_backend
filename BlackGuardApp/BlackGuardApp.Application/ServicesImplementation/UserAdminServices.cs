@@ -125,7 +125,7 @@ namespace BlackGuardApp.Application.ServicesImplementation
                     var assignRoleResult = await _userManager.AddToRolesAsync(user, roleNames);
                     if (assignRoleResult.Succeeded)
                     {
-                        return ApiResponse<string>.Success($"User '{emailAddress}'", "created successfully",
+                        return ApiResponse<string>.Success($"User '{emailAddress}' created successfully", "User created successfully",
                                                            StatusCodes.Status201Created);
                     }
                     else

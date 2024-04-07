@@ -27,7 +27,14 @@ namespace BlackGuardApp.Persistence.ServiceExtension
             services.AddScoped<IUserAdminServices, UserAdminServices>();
 
 
-
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("UserAdminPolicy", policy =>
+                {
+                    policy.RequireRole("UserAdmin");
+                    policy.RequireAuthenticatedUser();
+                });
+            });
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(builder =>
