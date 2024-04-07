@@ -3953,19 +3953,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HP\\.nuget\\packages\\": {}
+    "C:\\Users\\Coralstone\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\Source\\Repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Persistence\\BlackGuardApp.Persistence.csproj",
+      "projectUniqueName": "C:\\Users\\Itunu\\source\\repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Persistence\\BlackGuardApp.Persistence.csproj",
       "projectName": "BlackGuardApp.Persistence",
-      "projectPath": "C:\\Users\\HP\\Source\\Repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Persistence\\BlackGuardApp.Persistence.csproj",
-      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\Source\\Repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Persistence\\obj\\",
+      "projectPath": "C:\\Users\\Itunu\\source\\repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Persistence\\BlackGuardApp.Persistence.csproj",
+      "packagesPath": "C:\\Users\\Coralstone\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Itunu\\source\\repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Persistence\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Coralstone\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3979,11 +3979,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\HP\\Source\\Repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Application\\BlackGuardApp.Application.csproj": {
-              "projectPath": "C:\\Users\\HP\\Source\\Repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Application\\BlackGuardApp.Application.csproj"
+            "C:\\Users\\Itunu\\source\\repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Application\\BlackGuardApp.Application.csproj": {
+              "projectPath": "C:\\Users\\Itunu\\source\\repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Application\\BlackGuardApp.Application.csproj"
             },
-            "C:\\Users\\HP\\Source\\Repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Domain\\BlackGuardApp.Domain.csproj": {
-              "projectPath": "C:\\Users\\HP\\Source\\Repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Domain\\BlackGuardApp.Domain.csproj"
+            "C:\\Users\\Itunu\\source\\repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Domain\\BlackGuardApp.Domain.csproj": {
+              "projectPath": "C:\\Users\\Itunu\\source\\repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Domain\\BlackGuardApp.Domain.csproj"
             }
           }
         }
@@ -4059,7 +4059,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

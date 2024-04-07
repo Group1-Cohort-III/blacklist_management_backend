@@ -11,8 +11,12 @@ namespace BlackGuardApp.Persistence.Repositories
             _context = context;
             ProductRepository = new ProductRepository(context);
             AppUserRepository = new AppUserRepository(context);
+            BlacklistRepository = new BlacklistRepository(context);
+            BlacklistHistoryRepository = new BlacklistHistoryRepository(context);
 
         }
+        public IBlacklistHistoryRepository BlacklistHistoryRepository { get; internal set; }
+        public IBlacklistRepository BlacklistRepository { get; internal set; }
         public IProductRepository ProductRepository { get; }
         public IAppUserRepository AppUserRepository { get; private set; }
 

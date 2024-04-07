@@ -8,4 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BlackGuardApp.Persistence
-build_property.ProjectDir = C:\Users\HP\Source\Repos\blacklist_management_backend\BlackGuardApp\BlackGuardApp.Persistence\
+build_property.ProjectDir = C:\Users\Itunu\source\repos\blacklist_management_backend\BlackGuardApp\BlackGuardApp.Persistence\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
