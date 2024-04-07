@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using BlackGuardApp.Application.DTOs;
 using BlackGuardApp.Domain;
 
-namespace BlackGuardApp.Application.Interfaces
+namespace BlackGuardApp.Application.Interfaces.Services
 {
     public interface IProductService
     {

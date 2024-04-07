@@ -29,65 +29,6 @@ namespace BlackGuardApp.Application.ServicesImplementation
             _mapper = mapper;
         }
 
-        //public async Task<ApiResponse<string>> CreateUserAsync(string emailAddress, string[] roles)
-        //{
-        //    try
-        //    {
-        //        var existingUser = await _userManager.FindByEmailAsync(emailAddress);
-        //        if (existingUser != null)
-        //        {
-        //            return ApiResponse<string>.Failed(false, $"User with email address '{emailAddress}' already exists.", 
-        //                StatusCodes.Status400BadRequest, new List<string>());
-        //        }
-
-        //        var user = new AppUser 
-        //        {
-        //            UserName = emailAddress,
-        //            Email = emailAddress,
-        //            NormalizedEmail = emailAddress.ToUpper(),
-        //            EmailConfirmed = true,
-        //            LockoutEnabled = false
-        //        };
-
-        //        var CreateResult = await _userManager.CreateAsync(user);
-        //        if (CreateResult.Succeeded)
-        //        {
-        //            foreach (var role in roles)
-        //            {
-        //                if (!await _roleManager.RoleExistsAsync(role))
-        //                {
-        //                    return ApiResponse<string>.Failed(false, $"Role '{role}' does not exist.", 
-        //                        StatusCodes.Status400BadRequest, new List<string>());
-        //                }
-        //            }
-
-        //            var assignRole = await _userManager.AddToRolesAsync(user, roles);
-        //            if (assignRole.Succeeded)
-        //            {
-        //                return ApiResponse<string>.Success($"User '{emailAddress}'", "created successfully", 
-        //                    StatusCodes.Status201Created);
-        //            }
-        //            else
-        //            {
-        //                await _userManager.DeleteAsync(user);
-        //                return ApiResponse<string>.Failed(false, "Failed to assign roles to the user.", 
-        //                    StatusCodes.Status500InternalServerError, new List<string>());
-        //            }
-        //        }
-        //        else
-        //        {
-        //            return ApiResponse<string>.Failed(false, "Unknown error occurred while creating user.", 
-        //                StatusCodes.Status500InternalServerError, new List<string>());
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _logger.LogError(ex, "Error occurred while creating user.");
-        //        return ApiResponse<string>.Failed(false, "An error occurred while creating user.", 
-        //            StatusCodes.Status500InternalServerError, new List<string>());
-        //    }
-        //}
-
         public async Task<ApiResponse<string>> CreateUserAsync(string emailAddress, UserRoles[] roles)
         {
             try

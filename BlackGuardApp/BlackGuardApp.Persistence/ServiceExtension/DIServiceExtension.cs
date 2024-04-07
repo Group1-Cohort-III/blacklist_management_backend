@@ -23,6 +23,8 @@ namespace BlackGuardApp.Persistence.ServiceExtension
             services.AddScoped<RoleManager<IdentityRole>>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IBlacklistService, BlacklistService>();
+            services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IUserAdminServices, UserAdminServices>();
 

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using BlackGuardApp.Application.DTOs;
-using BlackGuardApp.Application.Interfaces;
 using BlackGuardApp.Application.Interfaces.Repositories;
+using BlackGuardApp.Application.Interfaces.Services;
 using BlackGuardApp.Common.Utilities;
 using BlackGuardApp.Domain;
 using BlackGuardApp.Domain.Entities;
