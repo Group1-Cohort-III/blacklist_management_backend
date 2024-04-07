@@ -1,3 +1,4 @@
+using BlackGuardApp.APIConfigurations;
 using BlackGuardApp.Common.Utilities;
 using BlackGuardApp.Mapper;
 using BlackGuardApp.Persistence.ServiceExtension;
@@ -13,28 +14,40 @@ try
 	ConfigurationHelper.InstantiateConfiguration(builder.Configuration);
 	var configuration = builder.Configuration;
 
-	// Add services to the container.
+
 	builder.Services.AddControllers();
 	builder.Services.AddEndpointsApiExplorer();
 	builder.Services.AddSwaggerGen();
+	builder.Services.AddSwagger();
+	builder.Services.AddAuthentication();
 	builder.Services.AddDependencies(configuration);
-
+    builder.Services.ConfigureAuthentication(configuration);
     builder.Services.AddAutoMapper(typeof(MapperProfile));
     builder.Logging.ClearProviders();
     builder.Host.UseNLog();
 
     var app = builder.Build();
 
-	// Configure the HTTP request pipeline.
+
 	if (app.Environment.IsDevelopment())
 	{
 		app.UseSwagger();
 		app.UseSwaggerUI();
 	}
 
-	app.UseHttpsRedirection();
+    using (var scope = app.Services.CreateScope())
+    {
+        var serviceProvider = scope.ServiceProvider;
+        await Seeder.SeedRolesAndUserAdmin(serviceProvider);
+    }
+
+    app.UseHttpsRedirection();
+
+	app.UseAuthentication();
 
 	app.UseAuthorization();
+
+	app.UseCors();
 
 	app.MapControllers();
 

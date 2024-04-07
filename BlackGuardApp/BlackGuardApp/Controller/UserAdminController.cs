@@ -1,77 +1,70 @@
 ﻿using BlackGuardApp.Application.DTOs;
 using BlackGuardApp.Application.Interfaces.Services;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlackGuardApp.Controller
 {
+    [Authorize(Policy = "UserAdminPolicy")]
     [Route("api/[controller]")]
     [ApiController]
     public class UserAdminController : ControllerBase
     {
-        
-            private readonly IUserAdminServices _userAdminServices;
 
-            public UserAdminController(IUserAdminServices userAdminService)
-            {
-                _userAdminServices = userAdminService;
-            }
+        private readonly IUserAdminServices _userAdminServices;
 
-            [HttpPost]
-            [Route("createUser")]
-            public async Task<IActionResult> CreateUser(string emailAddress)
-            {
-                try
-                {
-                    var result = await _userAdminServices.CreateUser(emailAddress);
-                    return Ok(result);
-                }
-                catch (Exception ex)
-                {
-                    return StatusCode(500, $"Error creating user: {ex.Message}");
-                }
-            }
+        public UserAdminController(IUserAdminServices userAdminService)
+        {
+            _userAdminServices = userAdminService;
+        }
 
-            [HttpGet]
-            [Route("GetUserByEmail")]
-            public async Task<IActionResult> GetUserByEmail(string emailAddress)
-            {
-                var user = await _userAdminServices.GetUserByEmail(emailAddress);
-                if (user != null)
-                {
-                    return Ok(user);
-                }
-                return NotFound("User not found.");
-            }
+        [HttpPost("CreateUser")]
+        public async Task<IActionResult> CreateUser([FromBody] CreateUserRequest request)
+        {
+            var response = await _userAdminServices.CreateUserAsync(request.EmailAddress, request.Roles);
+            return Ok(response);
+        }
 
-            [HttpPut]
-            [Route("updateUser")]
-            public async Task<IActionResult> UpdateUser(AppUserDtos user)
+        [HttpGet]
+        [Route("GetUserByEmail")]
+        public async Task<IActionResult> GetUserByEmail(string emailAddress)
+        {
+            var user = await _userAdminServices.GetUserByEmail(emailAddress);
+            if (user != null)
             {
-                try
-                {
-                    var result = await _userAdminServices.UpdateUser(user);
-                    return Ok(result);
-                }
-                catch (Exception ex)
-                {
-                    return StatusCode(500, $"Error updating user: {ex.Message}");
-                }
+                return Ok(user);
             }
+            return NotFound("User not found.");
+        }
 
-            [HttpDelete]
-            [Route("deleteUser")]
-            public async Task<IActionResult> DeleteUser(string emailAddress)
+        [HttpPut]
+        [Route("updateUser")]
+        public async Task<IActionResult> UpdateUser(AppUserDtos user)
+        {
+            try
             {
-                try
-                {
-                    var result = await _userAdminServices.DeleteUser(emailAddress);
-                    return Ok(result);
-                }
-                catch (Exception ex)
-                {
-                    return StatusCode(500, $"Error deleting user: {ex.Message}");
-                }
+                var result = await _userAdminServices.UpdateUser(user);
+                return Ok(result);
             }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error updating user: {ex.Message}");
+            }
+        }
+
+        [HttpDelete]
+        [Route("deleteUser")]
+        public async Task<IActionResult> DeleteUser(string emailAddress)
+        {
+            try
+            {
+                var result = await _userAdminServices.DeleteUser(emailAddress);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error deleting user: {ex.Message}");
+            }
+        }
     }
 }

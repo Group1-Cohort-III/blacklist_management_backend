@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BlackGuardApp.Application.DTOs.AuthenticationDTO;
+using BlackGuardApp.Domain;
 
 namespace BlackGuardApp.Application.Interfaces.Services
 {
-    internal interface IAuthenticationService
+    public interface IAuthenticationService
     {
+        Task<ApiResponse<LoginResponseDto>> LoginAsync(LoginRequestDto requestDto);
+        Task<ApiResponse<string>> SetPasswordAsync(string email, string password, string confirmPassword);
+        ApiResponse<string> ValidateTokenAsync(string token);
     }
 }

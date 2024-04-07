@@ -1,7 +1,5 @@
-﻿using Azure;
-using BlackGuardApp.Application.DTOs;
+﻿using BlackGuardApp.Application.DTOs;
 using BlackGuardApp.Application.Interfaces.Services;
-using BlackGuardApp.Domain;
 using Microsoft.AspNetCore.Mvc;
 
 
