@@ -1,5 +1,5 @@
 ﻿using BlackGuardApp.Application.DTOs;
-using BlackGuardApp.Application.Interfaces;
+using BlackGuardApp.Application.Interfaces.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
