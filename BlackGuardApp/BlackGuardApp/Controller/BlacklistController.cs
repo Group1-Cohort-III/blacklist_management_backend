@@ -6,6 +6,7 @@ using BlackGuardApp.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 
@@ -25,14 +26,14 @@ namespace BlackGuardApp.Controller
         [HttpGet("getBlacklistedProducts")]
         public async Task<IActionResult> GetBlacklistedProducts([FromQuery] PaginationDto dto )
         {
-            var response = await _blacklistService.GetBlacklistedProductsAsync(dto.Page, dto.PageSize);
+            var response = await _blacklistService.GetBlacklistedProductsAsync(dto.Page, dto.PageSize, dto.FilterValue, dto.Date);
             return Ok(response);
         }
 
         [HttpGet("getBlacklistedProduct")]
-        public async Task<IActionResult> GetBlacklistedProduct(BlacklistedProdRequestDto requestDto)
+        public async Task<IActionResult> GetBlacklistedProduct(string blacklistId)
         {
-            var response = await _blacklistService.GetBlacklistedProductAsync(requestDto.Id);
+            var response = await _blacklistService.GetBlacklistedProductAsync(blacklistId);
             if (!response.Succeeded)
                 return NotFound(response);
 
@@ -42,9 +43,9 @@ namespace BlackGuardApp.Controller
         [HttpPut("remove")]
         public async Task<IActionResult> RemoveBlacklistedProduct([FromBody] RemoveBlacklistedProductDto requestDto )
         {
-            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? throw new InvalidOperationException("User ID not found.");
+          //  var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? throw new InvalidOperationException("User ID not found.");
 
-            var response = await _blacklistService.RemoveFromBlacklistAsync(requestDto.Id, requestDto.Reason, userId);
+            var response = await _blacklistService.RemoveFromBlacklistAsync(requestDto.Id, requestDto.Reason, requestDto.userId);
             if (!response.Succeeded)
                 return NotFound(response);
 
@@ -54,9 +55,9 @@ namespace BlackGuardApp.Controller
         [HttpPost("blacklistProduct")]
         public async Task<IActionResult> BlacklistProduct([FromBody] BlacklistProductRequestDto requestDto)
         {
-            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? throw new InvalidOperationException("User ID not found.");
+          //  var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? throw new InvalidOperationException("User ID not found.");
 
-            var response = await _blacklistService.BlacklistProductAsync(requestDto.ProductId, requestDto.CriteriaId, requestDto.Reason, userId);
+            var response = await _blacklistService.BlacklistProductAsync(requestDto.ProductId, requestDto.CriteriaId, requestDto.Reason, requestDto.UserId);
             return Ok(response);
         }
     }

@@ -18,6 +18,8 @@ namespace BlackGuardApp.Persistence.Repositories
     {
         _blackGADbContext = blackGADbContext;
     }
-}
+
+       
+    }
 }
 

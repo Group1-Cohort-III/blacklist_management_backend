@@ -9,7 +9,7 @@ namespace BlackGuardApp.Application.Interfaces.Repositories
 {
     public interface IBlacklistRepository : IGenericRepository<BlackList>
     {
-        Task<List<BlackList>> GetBlacklistAsync();
-        Task<BlackList> GetBlacklistByIdAsync(string blacklistId);
+        Task<List<BlackList>> GetBlacklistIncludingAsync();
+        Task<BlackList> GetBlacklistIncludingByIdAsync(string blacklistId);
     }
 }

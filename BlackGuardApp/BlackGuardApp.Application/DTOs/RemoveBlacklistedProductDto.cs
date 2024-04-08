@@ -10,5 +10,6 @@ namespace BlackGuardApp.Application.DTOs
     {
         public string Id { get; set; }
         public string Reason { get; set; }
+        public string userId { get; set; } = null;
     }
 }
