@@ -12,9 +12,9 @@ namespace BlackGuardApp.Application.Interfaces.Services
     public interface IBlacklistService
     {
       
-        Task<ApiResponse<bool>> BlacklistProductAsync(string productId, string blacklistCriteriaId, string reason);
+        Task<ApiResponse<bool>> BlacklistProductAsync(string productId, string blacklistCriteriaId, string reason, string userId);
         Task<ApiResponse<BlacklistedProductDto>> GetBlacklistedProductAsync(string id);
         Task<PageResult<List<BlacklistedProductsDto>>> GetBlacklistedProductsAsync(int page, int pageSize);
-        Task<ApiResponse<bool>> RemoveFromBlacklistAsync(string id, string reason);
+        Task<ApiResponse<bool>> RemoveFromBlacklistAsync(string id, string reason, string userId);
     }
 }

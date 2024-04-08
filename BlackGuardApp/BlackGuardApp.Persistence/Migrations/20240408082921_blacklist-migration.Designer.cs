@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlackGuardApp.Persistence.Migrations
 {
     [DbContext(typeof(BlackGADbContext))]
-    [Migration("20240407195635_blacklist-migration")]
+    [Migration("20240408082921_blacklist-migration")]
     partial class blacklistmigration
     {
         /// <inheritdoc />

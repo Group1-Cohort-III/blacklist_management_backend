@@ -6,6 +6,7 @@ using BlackGuardApp.Common.Utilities;
 using BlackGuardApp.Domain;
 using BlackGuardApp.Domain.Entities;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
@@ -22,17 +23,16 @@ namespace BlackGuardApp.Application.ServicesImplementation
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly ILogger<BlacklistService> _logger;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-
+   
+        private readonly IUserAdminServices _userAdminServices;
         public BlacklistService(IUnitOfWork unitOfWork, 
                                IMapper mapper, 
-                               ILogger<BlacklistService> logger,
-                               IHttpContextAccessor httpContextAccessor)
+                               ILogger<BlacklistService> logger)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _logger = logger;
-            _httpContextAccessor = httpContextAccessor;
+       
         }
 
 
@@ -83,7 +83,7 @@ namespace BlackGuardApp.Application.ServicesImplementation
             }
         }
 
-        public async Task<ApiResponse<bool>> RemoveFromBlacklistAsync(string blacklistId, string reason)
+        public async Task<ApiResponse<bool>> RemoveFromBlacklistAsync(string blacklistId, string reason, string userId)
         {
             try
             {
@@ -92,7 +92,7 @@ namespace BlackGuardApp.Application.ServicesImplementation
                     return ApiResponse<bool>.Failed(new List<string> { "Invalid input" });
                 }
 
-                string userName = GetUserNameFromSession();
+
                
                 var blacklistedItem = await _unitOfWork.BlacklistRepository.GetByIdAsync(blacklistId);
                 if (blacklistedItem == null)
@@ -106,7 +106,7 @@ namespace BlackGuardApp.Application.ServicesImplementation
                 {
                     BlackListId = blacklistId,
                     Reason = reason,
-                    CreatedBy = userName,
+                    CreatedBy = userId,
                     Status = "Removed"
                 };
 
@@ -126,11 +126,11 @@ namespace BlackGuardApp.Application.ServicesImplementation
         }
 
 
-        public async Task<ApiResponse<bool>> BlacklistProductAsync(string productId, string blacklistCriteriaId, string reason)
+        public async Task<ApiResponse<bool>> BlacklistProductAsync(string productId, string blacklistCriteriaId, string reason,string userId)
         {
             try
             {
-               string userName = GetUserNameFromSession();
+              
                 if (string.IsNullOrEmpty(productId) || string.IsNullOrEmpty(blacklistCriteriaId))
                 {
                     return ApiResponse<bool>.Failed(new List<string> { "Invalid input" });
@@ -139,14 +139,14 @@ namespace BlackGuardApp.Application.ServicesImplementation
                 {
                     ProductId = productId,
                     BlacklistCriteriaId = blacklistCriteriaId,
-                    CreatedBy = userName,
+                    CreatedBy = userId,
                 };
                 await _unitOfWork.BlacklistRepository.AddAsync(blacklist);
                 var blacklistHistory = new BlacklistHistory
                 {
                     BlackListId = blacklist.Id,
                     Reason = reason,
-                    CreatedBy = userName,
+                    CreatedBy = userId,
                     Status = "Added"
                 };
 
@@ -175,21 +175,6 @@ namespace BlackGuardApp.Application.ServicesImplementation
 
 
 
-        private string GetUserNameFromSession()
-        {
-            var httpContext = _httpContextAccessor.HttpContext;
-
-            var firstNameClaim = httpContext?.User?.FindFirst(ClaimTypes.Name)?.Value;
-            var surnameClaim = httpContext?.User?.FindFirst(ClaimTypes.Surname)?.Value;
-
-            if (string.IsNullOrEmpty(firstNameClaim) || string.IsNullOrEmpty(surnameClaim))
-            {
-                throw new InvalidOperationException("First name or surname not found.");
-            }
-
-            string fullName = $"{firstNameClaim} {surnameClaim}";
-
-            return fullName;
-        }
+     
     }
 }
