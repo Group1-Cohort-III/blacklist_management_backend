@@ -42,7 +42,7 @@ namespace BlackGuardApp.Application.ServicesImplementation
             try
             {
                 List<BlackList> blacklistedItems = await _unitOfWork.BlacklistRepository.GetBlacklistIncludingAsync();
-                blacklistedItems = blacklistedItems.Where(item => !item.IsDeleted).ToList();
+                blacklistedItems = blacklistedItems.Where(item => item.IsDeleted).ToList();
                 var mappedItems = _mapper.Map<List<BlacklistedProductsDto>>(blacklistedItems);
 
                 if (!string.IsNullOrEmpty(filterValue))
@@ -50,11 +50,19 @@ namespace BlackGuardApp.Application.ServicesImplementation
                     mappedItems = ApplyFilter(mappedItems, filterValue);
                 }
 
-                if (!string.IsNullOrEmpty(dateString) )
+                if (!string.IsNullOrEmpty(dateString))
                 {
-                    DateTime date = DateTime.ParseExact(dateString, "dd\\\\MM\\\\yyyy", CultureInfo.InvariantCulture);
-
-                    mappedItems = ApplyDateFilter(mappedItems,date);
+                    DateTime date;
+                    if (DateTime.TryParseExact(dateString, "MM/dd/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out date) ||
+                        DateTime.TryParseExact(dateString, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out date) ||
+                        DateTime.TryParseExact(dateString, "yyyy/MM/dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
+                    {
+                        mappedItems = ApplyDateFilter(mappedItems, date);
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Invalid date format. Supported formats are MM/dd/yyyy, dd/MM/yyyy, and yyyy/MM/dd.");
+                    }
                 }
 
                 var pageResult = await Pagination<BlacklistedProductsDto>.GetPager(mappedItems, pageSize, page,
@@ -78,9 +86,10 @@ namespace BlackGuardApp.Application.ServicesImplementation
             }
         }
 
-    
 
-      
+
+
+
 
         public async Task<ApiResponse<BlacklistedProductDto>> GetBlacklistedProductAsync(string blacklistId)
         {
