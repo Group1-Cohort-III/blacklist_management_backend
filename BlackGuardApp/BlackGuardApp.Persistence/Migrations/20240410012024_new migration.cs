@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BlackGuardApp.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class newmigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -198,14 +198,12 @@ namespace BlackGuardApp.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BlacklistItems",
+                name: "BlackLists",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProductId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     BlacklistCriteriaId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AppUserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -213,20 +211,15 @@ namespace BlackGuardApp.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BlacklistItems", x => x.Id);
+                    table.PrimaryKey("PK_BlackLists", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_BlacklistItems_AspNetUsers_AppUserId",
-                        column: x => x.AppUserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_BlacklistItems_BlacklistCriterias_BlacklistCriteriaId",
+                        name: "FK_BlackLists_BlacklistCriterias_BlacklistCriteriaId",
                         column: x => x.BlacklistCriteriaId,
                         principalTable: "BlacklistCriterias",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BlacklistItems_Products_ProductId",
+                        name: "FK_BlackLists_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "Id",
@@ -238,11 +231,9 @@ namespace BlackGuardApp.Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    BlackListProductId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BlackListId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Reason = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BlackListedProductId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -252,10 +243,11 @@ namespace BlackGuardApp.Persistence.Migrations
                 {
                     table.PrimaryKey("PK_BlacklistHistories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_BlacklistHistories_BlacklistItems_BlackListedProductId",
-                        column: x => x.BlackListedProductId,
-                        principalTable: "BlacklistItems",
-                        principalColumn: "Id");
+                        name: "FK_BlacklistHistories_BlackLists_BlackListId",
+                        column: x => x.BlackListId,
+                        principalTable: "BlackLists",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -298,23 +290,18 @@ namespace BlackGuardApp.Persistence.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BlacklistHistories_BlackListedProductId",
+                name: "IX_BlacklistHistories_BlackListId",
                 table: "BlacklistHistories",
-                column: "BlackListedProductId");
+                column: "BlackListId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BlacklistItems_AppUserId",
-                table: "BlacklistItems",
-                column: "AppUserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BlacklistItems_BlacklistCriteriaId",
-                table: "BlacklistItems",
+                name: "IX_BlackLists_BlacklistCriteriaId",
+                table: "BlackLists",
                 column: "BlacklistCriteriaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BlacklistItems_ProductId",
-                table: "BlacklistItems",
+                name: "IX_BlackLists_ProductId",
+                table: "BlackLists",
                 column: "ProductId");
         }
 
@@ -343,10 +330,10 @@ namespace BlackGuardApp.Persistence.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "BlacklistItems");
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "BlackLists");
 
             migrationBuilder.DropTable(
                 name: "BlacklistCriterias");
