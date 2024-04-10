@@ -29,13 +29,15 @@ jobs:
           dotnet build --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ./myapp/**/*
+        run: |
+          pwd
+          dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp blacklist_management_backend/BlackGuardApp/BlackGuardApp/BlackGuardApp.csproj
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: .net-app
-          path: ./myapp/**/*
+          path: ${{env.DOTNET_ROOT}}/myapp
 
   deploy:
     runs-on: windows-latest
