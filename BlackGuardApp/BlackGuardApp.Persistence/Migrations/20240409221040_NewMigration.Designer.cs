@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlackGuardApp.Persistence.Migrations
 {
     [DbContext(typeof(BlackGADbContext))]
-    [Migration("20240406201242_Initial-Migration")]
-    partial class InitialMigration
+    [Migration("20240409221040_NewMigration")]
+    partial class NewMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -108,13 +108,10 @@ namespace BlackGuardApp.Persistence.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("BlackGuardApp.Domain.Entities.BlackListedProduct", b =>
+            modelBuilder.Entity("BlackGuardApp.Domain.Entities.BlackList", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("AppUserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("BlacklistCriteriaId")
@@ -137,19 +134,13 @@ namespace BlackGuardApp.Persistence.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("AppUserId");
 
                     b.HasIndex("BlacklistCriteriaId");
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("BlacklistItems");
+                    b.ToTable("BlackLists");
                 });
 
             modelBuilder.Entity("BlackGuardApp.Domain.Entities.BlacklistCriteria", b =>
@@ -189,11 +180,8 @@ namespace BlackGuardApp.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("BlackListProductId")
+                    b.Property<string>("BlackListId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("BlackListedProductId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("CreatedAt")
@@ -215,13 +203,9 @@ namespace BlackGuardApp.Persistence.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("BlackListedProductId");
+                    b.HasIndex("BlackListId");
 
                     b.ToTable("BlacklistHistories");
                 });
@@ -393,12 +377,8 @@ namespace BlackGuardApp.Persistence.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("BlackGuardApp.Domain.Entities.BlackListedProduct", b =>
+            modelBuilder.Entity("BlackGuardApp.Domain.Entities.BlackList", b =>
                 {
-                    b.HasOne("BlackGuardApp.Domain.Entities.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserId");
-
                     b.HasOne("BlackGuardApp.Domain.Entities.BlacklistCriteria", "BlacklistCriteria")
                         .WithMany()
                         .HasForeignKey("BlacklistCriteriaId")
@@ -411,8 +391,6 @@ namespace BlackGuardApp.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("AppUser");
-
                     b.Navigation("BlacklistCriteria");
 
                     b.Navigation("Product");
@@ -420,11 +398,13 @@ namespace BlackGuardApp.Persistence.Migrations
 
             modelBuilder.Entity("BlackGuardApp.Domain.Entities.BlacklistHistory", b =>
                 {
-                    b.HasOne("BlackGuardApp.Domain.Entities.BlackListedProduct", "BlackListedProduct")
+                    b.HasOne("BlackGuardApp.Domain.Entities.BlackList", "BlackList")
                         .WithMany()
-                        .HasForeignKey("BlackListedProductId");
+                        .HasForeignKey("BlackListId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("BlackListedProduct");
+                    b.Navigation("BlackList");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
