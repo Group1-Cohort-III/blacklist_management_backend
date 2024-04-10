@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\atoye\\Source\\Repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Domain\\BlackGuardApp.Domain.csproj": {}
+    "C:\\Users\\HP\\Source\\Repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Domain\\BlackGuardApp.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\atoye\\Source\\Repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Domain\\BlackGuardApp.Domain.csproj": {
+    "C:\\Users\\HP\\Source\\Repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Domain\\BlackGuardApp.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\atoye\\Source\\Repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Domain\\BlackGuardApp.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\Source\\Repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Domain\\BlackGuardApp.Domain.csproj",
         "projectName": "BlackGuardApp.Domain",
-        "projectPath": "C:\\Users\\atoye\\Source\\Repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Domain\\BlackGuardApp.Domain.csproj",
-        "packagesPath": "C:\\Users\\atoye\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\atoye\\Source\\Repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Domain\\obj\\",
+        "projectPath": "C:\\Users\\HP\\Source\\Repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Domain\\BlackGuardApp.Domain.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP\\Source\\Repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Domain\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\atoye\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,7 +22,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -39,11 +34,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -111,7 +101,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     }

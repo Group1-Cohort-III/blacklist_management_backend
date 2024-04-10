@@ -82,19 +82,20 @@ namespace BlackGuardApp.Application.ServicesImplementation
         {
             try
             {
-                var products = _mapper.Map<Product>(productRequestDto);
+                var products = new Product {ProductName = productRequestDto.Name, ProductDescription =  productRequestDto.Description, Id = Guid.NewGuid().ToString()};
+              //  var products = _mapper.Map<Product>(productRequestDto);
                 await _unitOfWork.ProductRepository.AddProductAsync(products);
                 await _unitOfWork.SaveChangesAsync();
 
-                var responseDto = _mapper.Map<ProductResponseDto>(products);
-                return new ApiResponse<ProductResponseDto>(true, $"Successfully added a product", 201, responseDto, new List<string>());
+               // var responseDto = _mapper.Map<ProductResponseDto>(products);
+                return new ApiResponse<ProductResponseDto>(true, $"Successfully added a product", 201, null, new List<string>());
 
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error occurred while adding a product");
                 var errorList = new List<string>();
-                return new ApiResponse<ProductResponseDto>(true, "Error occurred while adding a product", 500, null, errorList);
+                return new ApiResponse<ProductResponseDto>(false, "Error occurred while adding a product", 500, null, errorList);
             }
 
         }
