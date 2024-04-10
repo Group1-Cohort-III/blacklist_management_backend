@@ -27,6 +27,7 @@ namespace BlackGuardApp.Persistence.ServiceExtension
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<IUserAdminServices, UserAdminServices>();
+            services.AddScoped<IBlacklistCriteriaService, BlacklistCriteriaService>();
 
 
             services.AddAuthorization(options =>

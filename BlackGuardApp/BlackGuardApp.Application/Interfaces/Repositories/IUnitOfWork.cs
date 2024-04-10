@@ -7,6 +7,7 @@
         IAppUserRepository AppUserRepository { get; }
         IBlacklistHistoryRepository BlacklistHistoryRepository { get; }
         IBlacklistRepository BlacklistRepository { get; }
+        IBlacklistCriteriaRepository BlacklistCriteriaRepository { get; }
 
         Task<int> SaveChangesAsync();
         void Dispose();
