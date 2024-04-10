@@ -29,13 +29,13 @@ jobs:
           dotnet build --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ./myapp
+        run: dotnet publish -c Release -o ./myapp/**/*
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: .net-app
-          path: ./myapp
+          path: ./myapp/**/*
 
   deploy:
     runs-on: windows-latest
