@@ -23,15 +23,10 @@ jobs:
           include-prerelease: true
 
       - name: Build with dotnet
-        run: |
-          pwd
-          cd BlackGuardApp
-          dotnet build --configuration Release
+        run: dotnet build --configuration Release
 
       - name: dotnet publish
-        run: |
-          pwd
-          dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp BlackGuardApp/BlackGuardApp/BlackGuardApp.csproj
+        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
