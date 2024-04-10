@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace BlackGuardApp.Application.Interfaces.Repositories
 {
-    public interface IBlacklistRepository : IGenericRepository<BlackList>
+    public interface IBlacklistCriteriaRepository : IGenericRepository<BlacklistCriteria>
     {
-        Task<List<BlackList>> GetBlacklistIncludingAsync();
-        Task<BlackList> GetBlacklistIncludingByIdAsync(string blacklistId);
     }
 }

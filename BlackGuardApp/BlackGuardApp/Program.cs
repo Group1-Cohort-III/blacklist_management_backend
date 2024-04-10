@@ -1,6 +1,8 @@
 using BlackGuardApp.APIConfigurations;
+using BlackGuardApp.Application.ServicesImplementation;
 using BlackGuardApp.Common.Utilities;
 using BlackGuardApp.Mapper;
+using BlackGuardApp.Persistence.Repositories;
 using BlackGuardApp.Persistence.ServiceExtension;
 using NLog;
 using NLog.Web;
@@ -40,6 +42,7 @@ try
     {
         var serviceProvider = scope.ServiceProvider;
         await Seeder.SeedRolesAndUserAdmin(serviceProvider);
+
     }
 
     app.UseHttpsRedirection();

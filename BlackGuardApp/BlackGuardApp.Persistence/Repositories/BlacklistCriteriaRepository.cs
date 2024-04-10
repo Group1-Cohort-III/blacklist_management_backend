@@ -9,17 +9,16 @@ using System.Threading.Tasks;
 
 namespace BlackGuardApp.Persistence.Repositories
 {
-    public class BlacklistHistoryRepository : GenericRepository<BlacklistHistory>, IBlacklistHistoryRepository
+    public class BlacklistCriteriaRepository : GenericRepository<BlacklistCriteria>, IBlacklistCriteriaRepository
     {
 
         private readonly BlackGADbContext _blackGADbContext;
 
-    public BlacklistHistoryRepository(BlackGADbContext blackGADbContext) : base(blackGADbContext)
-    {
-        _blackGADbContext = blackGADbContext;
-    }
+        public BlacklistCriteriaRepository(BlackGADbContext blackGADbContext) : base(blackGADbContext)
+        {
+            _blackGADbContext = blackGADbContext;
+        }
 
-       
+
     }
 }
-
