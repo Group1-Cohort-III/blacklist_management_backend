@@ -28,11 +28,12 @@ try
 
     var app = builder.Build();
     app.UseSwagger();
+    app.UseSwaggerUI();
 
     if (app.Environment.IsDevelopment())
 	{
 		
-		app.UseSwaggerUI();
+		
 	}
 
     using (var scope = app.Services.CreateScope())
