@@ -25,35 +25,28 @@ namespace BlackGuardApp.Application.ServicesImplementation
         }
 
 
-        public async Task<ApiResponse<GetProductsDto>> GetAllProducts(int PerPage, int Page)
+        public async Task<ApiResponse<PageResult<IEnumerable<Product>>>> GetAllProducts(int PerPage, int Page)
         {
             try
             {
-                var products = _unitOfWork.ProductRepository.GetAllProductsAsync();
-                var productsDtos = _mapper.Map<List<ProductResponseDto>>(products);
-                var pagedProductDtos = Pagination<ProductResponseDto>.GetPager(
-                    productsDtos,
+                var products = await _unitOfWork.ProductRepository.GetAllProductsAsync();
+               // var productsDtos = _mapper.Map<List<ProductResponseDto>>(products);
+                var pagedProductDto = await Pagination<Product>.GetPager(
+                    products,
                     PerPage,
                     Page,
                     product => product.Id,
-                    product => product.Name
+                    product => product.ProductName
                     );
-                var getProductsDto = new GetProductsDto
-                {
-                    Product = pagedProductDtos.Result.Data.ToList(),
-                    PerPage = pagedProductDtos.Result.PerPage,
-                    CurrentPage = pagedProductDtos.Result.CurrentPage,
-                    TotalPageCount = pagedProductDtos.Result.TotalPageCount,
-                    TotalCount = pagedProductDtos.Result.TotalCount
-                };
-                return new ApiResponse<GetProductsDto>(true, "products retrieved.", getProductsDto, new List<string>() { });
+           
+                return new ApiResponse<PageResult<IEnumerable<Product>>>(true, "products retrieved.", pagedProductDto, new List<string>() { });
             }
             catch (Exception ex)
             {
 
 
                 _logger.LogError(ex, "Error occurred while getting all products.");
-                return new ApiResponse<GetProductsDto>(false, "Error occurred while getting all products.", 500, null, new List<string>() { ex.Message });
+                return new ApiResponse<PageResult<IEnumerable<Product>>> (false, "Error occurred while getting all products.", 500, null, new List<string>() { ex.Message });
             }
         }
 
@@ -82,6 +75,7 @@ namespace BlackGuardApp.Application.ServicesImplementation
         {
             try
             {
+               // var products = new Product {ProductName = productRequestDto.Name, ProductDescription =  productRequestDto.Description, Id = Guid.NewGuid().ToString()};
                 var products = _mapper.Map<Product>(productRequestDto);
                 await _unitOfWork.ProductRepository.AddProductAsync(products);
                 await _unitOfWork.SaveChangesAsync();
@@ -94,7 +88,7 @@ namespace BlackGuardApp.Application.ServicesImplementation
             {
                 _logger.LogError(ex, "Error occurred while adding a product");
                 var errorList = new List<string>();
-                return new ApiResponse<ProductResponseDto>(true, "Error occurred while adding a product", 500, null, errorList);
+                return new ApiResponse<ProductResponseDto>(false, "Error occurred while adding a product", 500, null, errorList);
             }
 
         }
