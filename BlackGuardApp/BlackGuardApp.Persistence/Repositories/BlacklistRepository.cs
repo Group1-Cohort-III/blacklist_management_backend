@@ -20,7 +20,7 @@ namespace BlackGuardApp.Persistence.Repositories
             _blackGADbContext = blackGADbContext;
         }
 
-        public async Task<BlackList> GetBlacklistByIdAsync(string blacklistId)
+        public async Task<BlackList> GetBlacklistIncludingByIdAsync(string blacklistId)
         {
             return await _blackGADbContext.BlackLists
                 .Include(bl => bl.BlacklistCriteria)  
@@ -28,7 +28,7 @@ namespace BlackGuardApp.Persistence.Repositories
                 .FirstOrDefaultAsync(bl => bl.Id == blacklistId);
         }
 
-        public async Task<List<BlackList>> GetBlacklistAsync()
+        public async Task<List<BlackList>> GetBlacklistIncludingAsync()
         {
             return await _blackGADbContext.BlackLists
                 .Include(bl => bl.BlacklistCriteria)

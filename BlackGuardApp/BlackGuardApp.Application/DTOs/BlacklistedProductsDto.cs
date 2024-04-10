@@ -8,9 +8,9 @@ namespace BlackGuardApp.Application.DTOs
 {
     public class BlacklistedProductsDto
     {
-        public Guid ItemId { get; set; }
-        public string ItemName { get; set; }
-        public string CategoryName { get; set; }
+        public string blacklistId { get; set; }
+        public string ProductName { get; set; }
+        public string CriteriaName { get; set; }
         public DateTime CreatedAt { get; set; }
     }
 
