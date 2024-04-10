@@ -1427,6 +1427,8 @@
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "AutoMapper": "13.0.1",
+          "BlackGuardApp.Common": "1.0.0",
+          "BlackGuardApp.Domain": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.0",
@@ -1447,6 +1449,7 @@
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "AutoMapper": "13.0.1",
+          "BlackGuardApp.Domain": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.0",
@@ -4420,7 +4423,9 @@
   "projectFileDependencyGroups": {
     "net7.0": [
       "AutoMapper >= 13.0.1",
+      "BlackGuardApp.Application >= 1.0.0",
       "BlackGuardApp.Common >= 1.0.0",
+      "BlackGuardApp.Domain >= 1.0.0",
       "BlackGuardApp.Persistence >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 7.0.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 7.0.0",
@@ -4436,36 +4441,49 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Itunu\\.nuget\\packages\\": {}
+    "C:\\Users\\omoru\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Itunu\\source\\repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp\\BlackGuardApp.csproj",
+      "projectUniqueName": "C:\\Users\\omoru\\Desktop\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp\\BlackGuardApp.csproj",
       "projectName": "BlackGuardApp",
-      "projectPath": "C:\\Users\\Itunu\\source\\repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp\\BlackGuardApp.csproj",
-      "packagesPath": "C:\\Users\\Itunu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Itunu\\source\\repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp\\obj\\",
+      "projectPath": "C:\\Users\\omoru\\Desktop\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp\\BlackGuardApp.csproj",
+      "packagesPath": "C:\\Users\\omoru\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\omoru\\Desktop\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Itunu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\omoru\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\Itunu\\source\\repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Common\\BlackGuardApp.Common.csproj": {
-              "projectPath": "C:\\Users\\Itunu\\source\\repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Common\\BlackGuardApp.Common.csproj"
+            "C:\\Users\\omoru\\Desktop\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Application\\BlackGuardApp.Application.csproj": {
+              "projectPath": "C:\\Users\\omoru\\Desktop\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Application\\BlackGuardApp.Application.csproj"
             },
-            "C:\\Users\\Itunu\\source\\repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Persistence\\BlackGuardApp.Persistence.csproj": {
-              "projectPath": "C:\\Users\\Itunu\\source\\repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Persistence\\BlackGuardApp.Persistence.csproj"
+            "C:\\Users\\omoru\\Desktop\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Common\\BlackGuardApp.Common.csproj": {
+              "projectPath": "C:\\Users\\omoru\\Desktop\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Common\\BlackGuardApp.Common.csproj"
+            },
+            "C:\\Users\\omoru\\Desktop\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Domain\\BlackGuardApp.Domain.csproj": {
+              "projectPath": "C:\\Users\\omoru\\Desktop\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Domain\\BlackGuardApp.Domain.csproj"
+            },
+            "C:\\Users\\omoru\\Desktop\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Persistence\\BlackGuardApp.Persistence.csproj": {
+              "projectPath": "C:\\Users\\omoru\\Desktop\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Persistence\\BlackGuardApp.Persistence.csproj"
             }
           }
         }

@@ -3874,25 +3874,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Itunu\\.nuget\\packages\\": {}
+    "C:\\Users\\omoru\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Itunu\\source\\repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Domain\\BlackGuardApp.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\omoru\\Desktop\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Domain\\BlackGuardApp.Domain.csproj",
       "projectName": "BlackGuardApp.Domain",
-      "projectPath": "C:\\Users\\Itunu\\source\\repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Domain\\BlackGuardApp.Domain.csproj",
-      "packagesPath": "C:\\Users\\Itunu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Itunu\\source\\repos\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Domain\\obj\\",
+      "projectPath": "C:\\Users\\omoru\\Desktop\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Domain\\BlackGuardApp.Domain.csproj",
+      "packagesPath": "C:\\Users\\omoru\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\omoru\\Desktop\\blacklist_management_backend\\BlackGuardApp\\BlackGuardApp.Domain\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Itunu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\omoru\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
