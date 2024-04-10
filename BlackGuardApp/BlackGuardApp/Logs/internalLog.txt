@@ -543,3 +543,14 @@
 2024-04-10 14:31:37.6523 Info Shutdown() called. Logger closing...
 2024-04-10 14:31:37.6523 Info Closing old configuration.
 2024-04-10 14:31:37.6617 Info Logger has been closed down.
+2024-04-10 15:01:24.3400 Info Registered target NLog.Targets.FileTarget(Name=customLog)
+2024-04-10 15:01:24.5239 Info Registered target NLog.Targets.FileTarget(Name=efcoreLog)
+2024-04-10 15:01:24.5239 Info Registered target NLog.Targets.FileTarget(Name=dbUpdateExcept)
+2024-04-10 15:01:24.5239 Info Registered target NLog.Targets.FileTarget(Name=efcoreDBCommand)
+2024-04-10 15:01:24.5239 Info Registered target NLog.Targets.FileTarget(Name=efcoreDBQuery)
+2024-04-10 15:01:24.5392 Info Registered target NLog.Targets.ConsoleTarget(Name=lifetimeConsole)
+2024-04-10 15:01:24.6209 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-10 15:01:24.8152 Info Validating config: Targets=6, ConfigItems=97, FilePath=C:\Users\atoye\Source\Repos\blacklist_management_backend\BlackGuardApp\BlackGuardApp\bin\Debug\net7.0\NLog.config
+2024-04-10 15:01:24.8407 Info Configuration initialized.
+2024-04-10 15:01:28.0148 Info Validating config: Targets=6, ConfigItems=97, FilePath=C:\Users\atoye\Source\Repos\blacklist_management_backend\BlackGuardApp\BlackGuardApp\bin\Debug\net7.0\NLog.config
+2024-04-10 15:01:28.0286 Warn Logger: Microsoft.Hosting.Lifetime configured with duplicate output to target: ConsoleTarget(Name=lifetimeConsole). LoggingRule with NamePattern='Microsoft.Hosting.Lifetime' and Level=Info has been skipped.
