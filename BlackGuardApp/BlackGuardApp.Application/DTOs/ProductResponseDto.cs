@@ -9,8 +9,8 @@ namespace BlackGuardApp.Application.DTOs
     public class ProductResponseDto
     {
         public string Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string ProductName { get; set; }
+        public string ProductDescription { get; set; }
     }
 
 }
