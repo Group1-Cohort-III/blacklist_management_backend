@@ -31,7 +31,7 @@ jobs:
       - name: dotnet publish
         run: |
           pwd
-          dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp blacklist_management_backend/BlackGuardApp/BlackGuardApp/BlackGuardApp.csproj
+          dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp BlackGuardApp/BlackGuardApp/BlackGuardApp.csproj
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
