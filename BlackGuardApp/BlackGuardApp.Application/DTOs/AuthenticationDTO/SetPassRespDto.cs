@@ -1,8 +1,7 @@
 ﻿namespace BlackGuardApp.Application.DTOs.AuthenticationDTO
 {
-    public class LoginResponseDto
+    public class SetPassRespDto
     {
-        public string JWToken { get; set; }
         public bool IsPasswordSet { get; set; }
     }
 }
