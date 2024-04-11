@@ -37,6 +37,11 @@ namespace BlackGuardApp.Persistence.ServiceExtension
                     policy.RequireRole("UserAdmin");
                     policy.RequireAuthenticatedUser();
                 });
+                options.AddPolicy("BlackListAdminPolicy", policy =>
+                {
+                    policy.RequireRole("BlackListAdmin");
+                    policy.RequireAuthenticatedUser();
+                });
             });
             services.AddCors(options =>
             {
