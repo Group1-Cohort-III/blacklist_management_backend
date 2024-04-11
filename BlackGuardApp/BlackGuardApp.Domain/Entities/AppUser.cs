@@ -11,5 +11,6 @@ namespace BlackGuardApp.Domain.Entities
         public UserRoles Roles { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public bool IsDeleted { get; set; }
+        public bool IsPasswordSet { get; set; }
     }
 }

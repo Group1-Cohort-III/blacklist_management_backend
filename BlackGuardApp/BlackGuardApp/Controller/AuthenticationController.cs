@@ -1,6 +1,5 @@
 ﻿using BlackGuardApp.Application.DTOs.AuthenticationDTO;
 using BlackGuardApp.Application.Interfaces.Services;
-using BlackGuardApp.Domain;
 using BlackGuardApp.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -30,21 +29,6 @@ namespace BlackGuardApp.Controller
         public async Task<IActionResult> SetPassword([FromBody] SetPasswordDto setPasswordDto)
         {
             return Ok(await _authService.SetPasswordAsync(setPasswordDto.Email, setPasswordDto.Password, setPasswordDto.ConfirmPassword));
-        }
-
-        [HttpPost("Validate-Token")]
-        public IActionResult ValidateToken([FromBody] ValidateTokenDto model)
-        {
-            var response = _authService.ValidateTokenAsync(model.Token);
-
-            if (response.Succeeded)
-            {
-                return Ok(new ApiResponse<string>(true, response.Message, response.StatusCode, null, new List<string>()));
-            }
-            else
-            {
-                return BadRequest(new ApiResponse<string>(false, response.Message, response.StatusCode, null, response.Errors));
-            }
         }
 
         [HttpPost("Logout")]
