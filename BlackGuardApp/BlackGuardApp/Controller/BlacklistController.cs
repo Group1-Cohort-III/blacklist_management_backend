@@ -13,27 +13,25 @@ namespace BlackGuardApp.Controller
     public class BlacklistController : ControllerBase
     {
         private readonly IBlacklistService _blacklistService;
-        private readonly IBlacklistCriteriaService _blacklistCriteriaService;
-        public BlacklistController(IBlacklistService blacklistService, IBlacklistCriteriaService blacklistCriteriaService)
+       
+        public BlacklistController(IBlacklistService blacklistService)
         {
             _blacklistService = blacklistService;
-            _blacklistCriteriaService = blacklistCriteriaService;
+            
         }
 
-        [HttpGet("getBlacklistedProducts")]
+        [HttpGet("get-blacklisted-products")]
         public async Task<IActionResult> GetBlacklistedProducts([FromQuery] PaginationDto dto )
         {
             var response = await _blacklistService.GetBlacklistedProductsAsync(dto.Page, dto.PageSize, dto.FilterValue, dto.Date);
             return Ok(response);
         }
 
-        [HttpGet("getBlacklistedProduct")]
+        [HttpGet("get-blacklisted-product")]
         public async Task<IActionResult> GetBlacklistedProduct(string blacklistId)
         {
             var response = await _blacklistService.GetBlacklistedProductAsync(blacklistId);
-            if (!response.Succeeded)
-                return NotFound(response);
-
+          
             return Ok(response);
         }
 
@@ -49,7 +47,7 @@ namespace BlackGuardApp.Controller
             return Ok(response);
         }
 
-        [HttpPost("blacklistProduct")]
+        [HttpPost("blacklist-product")]
         public async Task<IActionResult> BlacklistProduct([FromBody] BlacklistProductRequestDto requestDto)
         {
           //  var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? throw new InvalidOperationException("User ID not found.");
@@ -58,12 +56,7 @@ namespace BlackGuardApp.Controller
             return Ok(response);
         }
 
-        [HttpPost("AddBlacklistCriteria")]
-        public async Task<IActionResult> AddBlacklistCriteria()
-        {
-            var response = await _blacklistCriteriaService.AddCategories();
-            return Ok(response);
-        }
+       
     }
 }
 

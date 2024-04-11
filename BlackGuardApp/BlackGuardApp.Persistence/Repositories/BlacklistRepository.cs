@@ -20,13 +20,19 @@ namespace BlackGuardApp.Persistence.Repositories
             _blackGADbContext = blackGADbContext;
         }
 
+        public async Task<bool> GetByProductAsync(string productId)
+        {
+            return await _blackGADbContext.BlackLists.AnyAsync(bl => bl.ProductId.Equals(productId));
+        }
+
         public async Task<BlackList> GetBlacklistIncludingByIdAsync(string blacklistId)
         {
             return await _blackGADbContext.BlackLists
-                .Include(bl => bl.BlacklistCriteria)  
-                .Include(bl => bl.Product)          
-                .FirstOrDefaultAsync(bl => bl.Id == blacklistId);
+                .Include(bl => bl.BlacklistCriteria)
+                .Include(bl => bl.Product)
+                .FirstOrDefaultAsync(bl => bl.Id.Equals(blacklistId));
         }
+
 
         public async Task<List<BlackList>> GetBlacklistIncludingAsync()
         {
