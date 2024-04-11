@@ -3923,7 +3923,8 @@
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.0",
       "Microsoft.Extensions.DependencyInjection >= 7.0.0",
       "NLog.Database >= 5.2.8",
-      "NLog.Web.AspNetCore >= 5.3.8"
+      "NLog.Web.AspNetCore >= 5.3.8",
+      "System.Text.Json >= 7.0.0"
     ]
   },
   "packageFolders": {
@@ -4026,6 +4027,10 @@
           "NLog.Web.AspNetCore": {
             "target": "Package",
             "version": "[5.3.8, )"
+          },
+          "System.Text.Json": {
+            "target": "Package",
+            "version": "[7.0.0, )"
           }
         },
         "imports": [

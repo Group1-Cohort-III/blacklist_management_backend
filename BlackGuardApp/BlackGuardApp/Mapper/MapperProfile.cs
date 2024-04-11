@@ -23,7 +23,12 @@ namespace BlackGuardApp.Mapper
                 .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.ProductName))
                 .ForMember(dest => dest.CriteriaName, opt => opt.MapFrom(src => src.BlacklistCriteria.CategoryName))
                 .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(src => src.CreatedAt))
-                .ReverseMap(); 
+                .ReverseMap();
+
+            CreateMap<ProductResponseDto, Product>().ReverseMap();
+                CreateMap<ProductRequestDto, Product>().ReverseMap();
+                CreateMap<GetProductsDto, Product>().ReverseMap();
+          
 
 
         }

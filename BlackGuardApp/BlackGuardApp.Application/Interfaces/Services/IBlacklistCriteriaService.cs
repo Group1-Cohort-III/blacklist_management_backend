@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlackGuardApp.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,8 @@ namespace BlackGuardApp.Application.Interfaces.Services
 {
     public interface IBlacklistCriteriaService
     {
-        Task<string> AddCategories();
+        Task<string> AddBlackListCriteria(string categoryName, string categoryDescription);
+        Task<BlacklistCriteria> GetBlacklistCriteriaAsync(string creteriaId);
+        Task<List<BlacklistCriteria>> GetBlacklistCriteriasAsync();
     }
 }

@@ -54,7 +54,8 @@ namespace BlackGuardApp.Application.ServicesImplementation
                         var role = (await _userManager.GetRolesAsync(existingUser)).FirstOrDefault();
                         var response = new LoginResponseDto
                         {
-                            JWToken = GenerateJwtToken(existingUser, role)
+                            JWToken = GenerateJwtToken(existingUser, role),
+                            IsPasswordSet = true,
                         };
                         return ApiResponse<LoginResponseDto>.Success(response, "Logged In Successfully", StatusCodes.Status200OK);
 
@@ -112,19 +113,19 @@ namespace BlackGuardApp.Application.ServicesImplementation
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        public async Task<ApiResponse<string>> SetPasswordAsync(string email, string password, string confirmPassword)
+        public async Task<ApiResponse<SetPassRespDto>> SetPasswordAsync(string email, string password, string confirmPassword)
         {
             try
             {
                 if (password != confirmPassword)
                 {
-                    return new ApiResponse<string>(false, "Passwords do not match.", StatusCodes.Status400BadRequest, new List<string>());
+                    return ApiResponse<SetPassRespDto>.Failed(false, "Passwords do not match.", StatusCodes.Status400BadRequest, new List<string>());
                 }
 
                 var existingUser = await _userManager.FindByEmailAsync(email);
                 if (existingUser == null)
                 {
-                    return new ApiResponse<string>(false, "User not found.", StatusCodes.Status404NotFound, new List<string>());
+                    return ApiResponse<SetPassRespDto>.Failed(false, "User not found.", StatusCodes.Status404NotFound, new List<string>());
                 }
 
                 var token = await _userManager.GeneratePasswordResetTokenAsync(existingUser);
@@ -132,18 +133,23 @@ namespace BlackGuardApp.Application.ServicesImplementation
                 var result = await _userManager.ResetPasswordAsync(existingUser, token, password);
                 if (result.Succeeded)
                 {
-
-                    return new ApiResponse<string>(true, StatusCodes.Status200OK, "Password set successfully, you can proceed to login");
+                    existingUser.IsPasswordSet = true;
+                    await _userManager.UpdateAsync(existingUser);
+                    var response = new SetPassRespDto
+                    {
+                        IsPasswordSet = true,
+                    };
+                    return ApiResponse<SetPassRespDto>.Success(response, "Password set successfully, you can proceed to login", StatusCodes.Status200OK);
                 }
                 else
                 {
-                    return new ApiResponse<string>(false, "Failed to set password.", StatusCodes.Status500InternalServerError, new List<string>());
+                    return ApiResponse<SetPassRespDto>.Failed(false, "Failed to set password.", StatusCodes.Status500InternalServerError, new List<string>());
                 }
             }
             catch (Exception ex)
             {
                 _logger.LogError($"An error occurred while setting password: {ex}");
-                return new ApiResponse<string>(false, "An error occurred while setting password: " + ex.Message,
+                return ApiResponse<SetPassRespDto>.Failed(false, "An error occurred while setting password: " + ex.Message,
                     StatusCodes.Status500InternalServerError, new List<string>() { ex.Message });
             }
         }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BlackGuardApp.Application.DTOs
 {
-    public class ProductRequestDto
+    public class CriteriaDto
     {
-        public string ProductName { get; set; }
-        public string ProductDescription { get; set; }
+        public string CategoryName { get; set; }
+        public string CategoryDescription { get; set; }
     }
 }

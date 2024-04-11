@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BlackGuardApp.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+55828d8193b0f81bbabec6d5234e71edf1e4599b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b1e3acbb75d82c4e7c3ca1c29d25191b235e4b63")]
 [assembly: System.Reflection.AssemblyProductAttribute("BlackGuardApp.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BlackGuardApp.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

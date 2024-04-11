@@ -11,5 +11,6 @@ namespace BlackGuardApp.Application.Interfaces.Repositories
     {
         Task<List<BlackList>> GetBlacklistIncludingAsync();
         Task<BlackList> GetBlacklistIncludingByIdAsync(string blacklistId);
+        Task<bool> GetByProductAsync(string productId);
     }
 }

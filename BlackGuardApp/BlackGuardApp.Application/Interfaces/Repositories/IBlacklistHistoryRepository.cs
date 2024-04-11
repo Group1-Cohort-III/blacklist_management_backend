@@ -9,5 +9,6 @@ namespace BlackGuardApp.Application.Interfaces.Repositories
 {
     public interface IBlacklistHistoryRepository : IGenericRepository<BlacklistHistory>
     {
+        Task<BlacklistHistory> GetHistoryByBlacklistIdAsync(string blacklistId);
     }
 }
