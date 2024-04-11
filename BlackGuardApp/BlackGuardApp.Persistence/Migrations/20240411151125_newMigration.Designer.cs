@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlackGuardApp.Persistence.Migrations
 {
     [DbContext(typeof(BlackGADbContext))]
-    [Migration("20240411124015_AllUpdatedMigrationsInOne")]
-    partial class AllUpdatedMigrationsInOne
+    [Migration("20240411151125_newMigration")]
+    partial class newMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
