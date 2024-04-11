@@ -1,6 +1,7 @@
 ﻿using BlackGuardApp.Application.Interfaces.Repositories;
 using BlackGuardApp.Domain.Entities;
 using BlackGuardApp.Persistence.AppContext;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,12 @@ namespace BlackGuardApp.Persistence.Repositories
         _blackGADbContext = blackGADbContext;
     }
 
-       
+        public async Task<BlacklistHistory> GetHistoryByBlacklistIdAsync(string blacklistId)
+        {
+            return await _blackGADbContext.BlacklistHistories
+                .FirstOrDefaultAsync(bl => bl.BlackListId.Equals(blacklistId));
+        }
+
     }
 }
 
