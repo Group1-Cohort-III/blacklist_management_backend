@@ -1,13 +1,13 @@
 ﻿using BlackGuardApp.Application.DTOs;
 using BlackGuardApp.Application.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 
 namespace BlackGuardApp.Controller
 {
+    [Authorize(Policy = "BlackListAdminPolicy")]
     [Route("api/[controller]")]
     [ApiController]
     public class BlacklistController : ControllerBase

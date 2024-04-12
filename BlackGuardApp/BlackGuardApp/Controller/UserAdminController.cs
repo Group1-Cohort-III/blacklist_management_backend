@@ -66,5 +66,10 @@ namespace BlackGuardApp.Controller
                 return StatusCode(500, $"Error deleting user: {ex.Message}");
             }
         }
+        [HttpGet("Get-All-Users")]
+        public async Task<IActionResult> GetAllUser(int page, int perPage)
+        {
+            return Ok(await _userAdminServices.GetAllUsersAsync(page, perPage));
+        }
     }
 }
