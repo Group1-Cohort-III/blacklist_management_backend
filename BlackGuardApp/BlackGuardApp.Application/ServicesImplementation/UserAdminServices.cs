@@ -2,6 +2,7 @@
 using BlackGuardApp.Application.DTOs;
 using BlackGuardApp.Application.Interfaces.Repositories;
 using BlackGuardApp.Application.Interfaces.Services;
+using BlackGuardApp.Common.Utilities;
 using BlackGuardApp.Domain;
 using BlackGuardApp.Domain.Entities;
 using BlackGuardApp.Domain.Enum;
@@ -66,6 +67,7 @@ namespace BlackGuardApp.Application.ServicesImplementation
                     var assignRoleResult = await _userManager.AddToRolesAsync(user, roleNames);
                     if (assignRoleResult.Succeeded)
                     {
+                        await _unitOfWork.SaveChangesAsync();
                         return ApiResponse<string>.Success($"User '{emailAddress}' created successfully", "User created successfully",
                                                            StatusCodes.Status201Created);
                     }
@@ -98,11 +100,26 @@ namespace BlackGuardApp.Application.ServicesImplementation
             return result;
         }
 
-        public async Task <List<AppUser>> GetAllUsers()
+        public async Task<ApiResponse<PageResult<IEnumerable<GetAllUsersDto>>>> GetAllUsersAsync(int page, int perPage)
         {
-            var users = await _unitOfWork.AppUserRepository.GetAllAsync();
+            try
+            {
+                var allUsers = await _unitOfWork.AppUserRepository.GetAllAsync();
+                var pagedUsers = await Pagination<AppUser>.GetPager(
+                    allUsers,
+                    perPage,
+                    page,
+                    user => user.LastName,
+                    user => user.Id.ToString());
+                var pagedUserDtos = _mapper.Map<PageResult<IEnumerable<GetAllUsersDto>>>(pagedUsers);
 
-            return users;
+                return ApiResponse<PageResult<IEnumerable<GetAllUsersDto>>>.Success(pagedUserDtos, "Users found.", 200);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while retrieving users by pagination. Page: {Page}, PerPage: {PerPage}", page, perPage);
+                return ApiResponse<PageResult<IEnumerable<GetAllUsersDto>>>.Failed(false, "An error occurred while retrieving users by pagination.", 500, new List<string> { ex.Message });
+            }
         }
 
         public async Task<string> UpdateUser(AppUserDtos user)
@@ -130,9 +147,9 @@ namespace BlackGuardApp.Application.ServicesImplementation
         {
             var result = await _userManager.FindByEmailAsync(emailAddress);
             ArgumentNullException.ThrowIfNull(result);
-            await _userManager.DeleteAsync(result);
-            var deleted = await _unitOfWork.SaveChangesAsync();
-            if (deleted > 0)
+            var deleted = await _userManager.DeleteAsync(result);
+            await _unitOfWork.SaveChangesAsync();
+            if (deleted.Succeeded)
             {
                 return $"{result.FirstName} deleted successfuly";
             }
