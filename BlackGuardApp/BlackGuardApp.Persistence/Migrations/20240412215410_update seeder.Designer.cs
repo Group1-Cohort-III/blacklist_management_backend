@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlackGuardApp.Persistence.Migrations
 {
     [DbContext(typeof(BlackGADbContext))]
-    [Migration("20240411151125_newMigration")]
-    partial class newMigration
+    [Migration("20240412215410_update seeder")]
+    partial class updateseeder
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

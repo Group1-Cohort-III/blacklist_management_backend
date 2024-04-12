@@ -29,16 +29,16 @@ namespace BlackGuardApp.Common.Utilities
                 await roleManager.CreateAsync(userRole);
             }
 
-            if (await seededAdmin.FindByEmailAsync("useradmin@blackgaurd.com") == null)
+            if (await seededAdmin.FindByEmailAsync("useradmin@blackguard.com") == null)
             {
                 var userAdmin = new AppUser
                 {
                     Id = Guid.NewGuid().ToString(),
                     FirstName = "UserAdmin",
                     LastName = "UserAdmin",
-                    UserName = "useradmin@blackgaurd.com",
-                    Email = "useradmin@blackgaurd.com",
-                    NormalizedEmail = "useradmin@blackgaurd.com".ToUpper(),
+                    UserName = "useradmin@blackguard.com",
+                    Email = "useradmin@blackguard.com",
+                    NormalizedEmail = "useradmin@blackguard.com".ToUpper(),
                     EmailConfirmed = true,
                     LockoutEnabled = false,
                     PhoneNumber = "1234567890",
