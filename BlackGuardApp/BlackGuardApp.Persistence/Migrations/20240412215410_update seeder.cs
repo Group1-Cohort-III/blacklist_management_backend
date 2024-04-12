@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BlackGuardApp.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class newMigration : Migration
+    public partial class updateseeder : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
