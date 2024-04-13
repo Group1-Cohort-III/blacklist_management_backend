@@ -15,14 +15,14 @@ namespace BlackGuardApp.Controller
             _blacklistCriteriaService = blacklistCriteriaService;
         }
 
-        [HttpPost("get-blacklist-criterias")]
+        [HttpGet("get-blacklist-criterias")]
         public async Task<IActionResult> GetBlacklistCriterias()
         {
             var response = await _blacklistCriteriaService.GetBlacklistCriteriasAsync();
             return Ok(response);
         }
 
-        [HttpPost("get-blacklist-criteria")]
+        [HttpGet("get-blacklist-criteria")]
         public async Task<IActionResult> GetBlacklistCriteria(string criteriaId )
         {
             var response = await _blacklistCriteriaService.GetBlacklistCriteriaAsync(criteriaId);
