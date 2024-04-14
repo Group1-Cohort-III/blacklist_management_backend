@@ -132,7 +132,7 @@ namespace BlackGuardApp.Application.ServicesImplementation
                     CreatedBy = userId,
                     Status = "Removed"
                 };
-                product.IsBlacklisted = true;
+                product.IsBlacklisted = false;
                 _unitOfWork.BlacklistRepository.Update(blacklistedItem);
                 await _unitOfWork.BlacklistHistoryRepository.AddAsync(blacklistHistory);
                 _unitOfWork.ProductRepository.Update(product);
