@@ -30,16 +30,17 @@ namespace BlackGuardApp.Application.ServicesImplementation
             try
             {
                 var products = await _unitOfWork.ProductRepository.GetAllProductsAsync();
-               // var productsDtos = _mapper.Map<List<ProductResponseDto>>(products);
-                var pagedProductDto = await Pagination<Product>.GetPager(
-                    products,
-                    PerPage,
-                    Page,
-                    product => product.Id,
-                    product => product.ProductName
-                    );
-           
-                return new ApiResponse<PageResult<IEnumerable<Product>>>(true, "products retrieved.", pagedProductDto, new List<string>() { });
+                var nonBlacklistedProducts = products.Where(product => !product.IsBlacklisted).ToList();
+
+                var pagedNonBlacklistedProducts = await Pagination<Product>.GetPager(
+                nonBlacklistedProducts,
+                PerPage,
+                Page,
+                product => product.Id,
+                product => product.ProductName
+                );
+
+                return new ApiResponse<PageResult<IEnumerable<Product>>>(true, "products retrieved.", pagedNonBlacklistedProducts, new List<string>() { });
             }
             catch (Exception ex)
             {
