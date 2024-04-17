@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BlackGuardApp.Controller
 {
-    [Authorize(Policy = "BlackListAdminPolicy")]
+   
     [Route("api/[controller]")]
     [ApiController]
     public class BlacklistController : ControllerBase
@@ -27,6 +27,7 @@ namespace BlackGuardApp.Controller
             return Ok(response);
         }
 
+        [Authorize(Policy = "BlackListAdminPolicy")]
         [HttpGet("get-blacklisted-product")]
         public async Task<IActionResult> GetBlacklistedProduct(string blacklistId)
         {
@@ -35,6 +36,7 @@ namespace BlackGuardApp.Controller
             return Ok(response);
         }
 
+        [Authorize(Policy = "BlackListAdminPolicy")]
         [HttpPut("remove")]
         public async Task<IActionResult> RemoveBlacklistedProduct([FromBody] RemoveBlacklistedProductDto requestDto )
         {
@@ -47,6 +49,7 @@ namespace BlackGuardApp.Controller
             return Ok(response);
         }
 
+        [Authorize(Policy = "BlackListAdminPolicy")]
         [HttpPost("blacklist-product")]
         public async Task<IActionResult> BlacklistProduct([FromBody] BlacklistProductRequestDto requestDto)
         {
