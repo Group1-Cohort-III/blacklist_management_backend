@@ -151,9 +151,9 @@ namespace BlackGuardApp.Application.ServicesImplementation
             await _unitOfWork.SaveChangesAsync();
             if (deleted.Succeeded)
             {
-                return $"{result.FirstName} deleted successfuly";
+                return "User deleted successfuly";
             }
-            return $"Error occurred while deleting {result.FirstName}";
+            return $"Error occurred while deleting";
         }
     }
 }

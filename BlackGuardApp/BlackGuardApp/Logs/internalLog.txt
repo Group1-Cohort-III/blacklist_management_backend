@@ -2416,3 +2416,36 @@
 2024-04-16 09:39:48.0467 Info Configuration initialized.
 2024-04-16 09:39:49.4408 Info Validating config: Targets=6, ConfigItems=97, FilePath=C:\Users\HP\Source\Repos\blacklist_management_backend\BlackGuardApp\BlackGuardApp\bin\Debug\net7.0\NLog.config
 2024-04-16 09:39:49.4710 Warn Logger: Microsoft.Hosting.Lifetime configured with duplicate output to target: ConsoleTarget(Name=lifetimeConsole). LoggingRule with NamePattern='Microsoft.Hosting.Lifetime' and Level=Info has been skipped.
+2024-04-22 20:38:07.6364 Info Registered target NLog.Targets.FileTarget(Name=customLog)
+2024-04-22 20:38:07.7283 Info Registered target NLog.Targets.FileTarget(Name=efcoreLog)
+2024-04-22 20:38:07.7283 Info Registered target NLog.Targets.FileTarget(Name=dbUpdateExcept)
+2024-04-22 20:38:07.7283 Info Registered target NLog.Targets.FileTarget(Name=efcoreDBCommand)
+2024-04-22 20:38:07.7398 Info Registered target NLog.Targets.FileTarget(Name=efcoreDBQuery)
+2024-04-22 20:38:07.7398 Info Registered target NLog.Targets.ConsoleTarget(Name=lifetimeConsole)
+2024-04-22 20:38:07.8214 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-22 20:38:07.9759 Info Validating config: Targets=6, ConfigItems=97, FilePath=C:\Users\omoru\Desktop\blacklist_management_backend\BlackGuardApp\BlackGuardApp\bin\Debug\net7.0\NLog.config
+2024-04-22 20:38:08.0128 Info Configuration initialized.
+2024-04-22 20:38:12.7839 Info Validating config: Targets=6, ConfigItems=97, FilePath=C:\Users\omoru\Desktop\blacklist_management_backend\BlackGuardApp\BlackGuardApp\bin\Debug\net7.0\NLog.config
+2024-04-22 20:38:12.8187 Warn Logger: Microsoft.Hosting.Lifetime configured with duplicate output to target: ConsoleTarget(Name=lifetimeConsole). LoggingRule with NamePattern='Microsoft.Hosting.Lifetime' and Level=Info has been skipped.
+2024-04-22 21:42:48.3165 Info Registered target NLog.Targets.FileTarget(Name=customLog)
+2024-04-22 21:42:48.3649 Info Registered target NLog.Targets.FileTarget(Name=efcoreLog)
+2024-04-22 21:42:48.3649 Info Registered target NLog.Targets.FileTarget(Name=dbUpdateExcept)
+2024-04-22 21:42:48.3649 Info Registered target NLog.Targets.FileTarget(Name=efcoreDBCommand)
+2024-04-22 21:42:48.3649 Info Registered target NLog.Targets.FileTarget(Name=efcoreDBQuery)
+2024-04-22 21:42:48.3740 Info Registered target NLog.Targets.ConsoleTarget(Name=lifetimeConsole)
+2024-04-22 21:42:48.4231 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-22 21:42:48.4717 Info Validating config: Targets=6, ConfigItems=97, FilePath=C:\Users\omoru\Desktop\blacklist_management_backend\BlackGuardApp\BlackGuardApp\bin\Debug\net7.0\NLog.config
+2024-04-22 21:42:48.5086 Info Configuration initialized.
+2024-04-22 21:42:49.4460 Info Validating config: Targets=6, ConfigItems=97, FilePath=C:\Users\omoru\Desktop\blacklist_management_backend\BlackGuardApp\BlackGuardApp\bin\Debug\net7.0\NLog.config
+2024-04-22 21:42:49.4698 Warn Logger: Microsoft.Hosting.Lifetime configured with duplicate output to target: ConsoleTarget(Name=lifetimeConsole). LoggingRule with NamePattern='Microsoft.Hosting.Lifetime' and Level=Info has been skipped.
+2024-04-22 21:43:04.8172 Info Registered target NLog.Targets.FileTarget(Name=customLog)
+2024-04-22 21:43:04.8499 Info Registered target NLog.Targets.FileTarget(Name=efcoreLog)
+2024-04-22 21:43:04.8499 Info Registered target NLog.Targets.FileTarget(Name=dbUpdateExcept)
+2024-04-22 21:43:04.8499 Info Registered target NLog.Targets.FileTarget(Name=efcoreDBCommand)
+2024-04-22 21:43:04.8499 Info Registered target NLog.Targets.FileTarget(Name=efcoreDBQuery)
+2024-04-22 21:43:04.8499 Info Registered target NLog.Targets.ConsoleTarget(Name=lifetimeConsole)
+2024-04-22 21:43:04.8921 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-22 21:43:04.9726 Info Validating config: Targets=6, ConfigItems=97, FilePath=C:\Users\omoru\Desktop\blacklist_management_backend\BlackGuardApp\BlackGuardApp\bin\Debug\net7.0\NLog.config
+2024-04-22 21:43:05.0224 Info Configuration initialized.
+2024-04-22 21:43:06.2010 Info Validating config: Targets=6, ConfigItems=97, FilePath=C:\Users\omoru\Desktop\blacklist_management_backend\BlackGuardApp\BlackGuardApp\bin\Debug\net7.0\NLog.config
+2024-04-22 21:43:06.2284 Warn Logger: Microsoft.Hosting.Lifetime configured with duplicate output to target: ConsoleTarget(Name=lifetimeConsole). LoggingRule with NamePattern='Microsoft.Hosting.Lifetime' and Level=Info has been skipped.
