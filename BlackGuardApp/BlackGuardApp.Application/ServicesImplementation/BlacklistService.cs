@@ -219,8 +219,9 @@ namespace BlackGuardApp.Application.ServicesImplementation
         private List<BlacklistedProductsDto> ApplyFilter(List<BlacklistedProductsDto> items, string? filterValue)
         {
             return items.Where(item =>
-                item.ProductName.Contains(filterValue) ||
-                item.CriteriaName.Contains(filterValue)
+                item.ProductName.Contains(filterValue, StringComparison.OrdinalIgnoreCase) ||
+                item.ProductDescription.Contains(filterValue, StringComparison.OrdinalIgnoreCase) ||
+                item.CriteriaName.Contains(filterValue, StringComparison.OrdinalIgnoreCase)
             ).ToList();
         }
 
